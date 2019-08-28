@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+
+import sys
+from flashcard import *
+
+input_file = sys.argv[1]
+
+cards = []
+
+with open(input_file) as f:
+    for line in f:
+        line = line.strip()
+        cols = line.split(',')
+        if len(cols) is 2:
+            pass
+        else:
+            for card in RegularVerb(line).praesens_cards():
+                cards.append(card)
+
+for card in cards:
+    guess = input(card.text + ": " )
+    if card.matches(guess):
+        print("Correct!")
+        input()
+    else:
+        print("Too bad! The correct answer was: " + card.back)
+        break
+
+print("Well done!")
