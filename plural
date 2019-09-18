@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+
+import sys
+from flashcard import *
+from random import shuffle
+
+def get_cards(input_file):
+    with open(input_file) as f:
+        it = (line.strip().split(',') for line in f)
+        return [ Card(i[0], i[1]) for i in it ]
+    
+    return []
+
+
+input_file = sys.argv[1]
+cards = get_cards(input_file)
+shuffle(cards)
+
+for card in cards:
+    guess = input(card.text + ": " )
+    if card.matches(guess):
+        print("Correct!")
+        input()
+    else:
+        print("Too bad! The correct answer was: " + card.back)
+        sys.exit(1)
+
+print("Well done!")
