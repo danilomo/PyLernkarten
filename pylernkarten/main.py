@@ -69,6 +69,21 @@ def add(word):
 
     decks[current_deck].append(word)
 
+
+@command
+def remove(word):
+    global current_deck
+    
+    if current_deck is None:
+        print("No deck is set")
+        return
+
+    if word not in words:
+        print("This word does not exist.")
+        return
+
+    decks[current_deck].remove(word)
+
 @command
 def showdeck(name):
     print(decks[name])
@@ -115,12 +130,35 @@ def listnouns():
     print(tags['noun'])
 
 @command
+def showdecks():
+    print(list(decks.keys()))
+
+@command
 def createalias(comm, alias):
     commands[alias] = commands[comm]
 
 @command
 def saveworkspace():
     save_workspace()
+
+def play_cards(cards_it):
+    cards = list(cards_it)
+    shuffle(cards)
+
+    for card in cards:
+        pass
+
+@command
+def playdeck(name):
+    pass
+
+@command
+def playreverse(name):
+    pass
+
+@command 
+def diederdas(name):
+    pass
 
 @command
 def exit():
@@ -151,11 +189,24 @@ def save_meanings(f):
     for k, v in relations['meaning'].items():
         ms = ('"%s"' % s for s in v)
         f.write('addmeaning %s %s\n' % (k,' '.join(ms)))
+
+def save_decks(f):
+    for k, v in decks.items():
+        save_deck(f, k, v) 
+
+def save_deck(f, name, deck):
+    f.write("createdeck " + name + "\n")
+    for word in deck:
+        f.write("add " + word + "\n")
+    f.write("closedeck " + name + "\n")
+
+
     
 def save_workspace():
     with open("workspace.txt", "w") as f:
         save_nouns(f)
         save_meanings(f)
+        save_decks(f)
 
 def load_workspace():
     try:

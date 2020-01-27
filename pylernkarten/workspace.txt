@@ -1,6 +1,10 @@
-n die Kette
 n die Lampe
+n die Kette
 n der Tisch
-n das Handy
 n das Buch
-addmeaning Kette "chain" "necklace"
+n das Handy
+addmeaning Kette "necklace" "chain"
+createdeck objects
+add Lampe
+add Kette
+closedeck
