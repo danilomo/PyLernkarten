@@ -1,0 +1,6 @@
+n die Kette
+n die Lampe
+n der Tisch
+n das Handy
+n das Buch
+addmeaning Kette "chain" "necklace"
