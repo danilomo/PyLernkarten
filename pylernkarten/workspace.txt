@@ -1,10 +1,68 @@
 n die Lampe
+n die Tür
 n die Kette
+n die Brille
+n die Flasche
+n die Tasche
+n der Kugelschreiber
+n der Tür
+n der Vater
+n der Bleistift
+n der Schrank
 n der Tisch
+n der Teppich
+n der Fotoapparat
+n der Stuhl
+n der Vorhang
+n der Sessel
+n der Schlüssel
+n das Heft
 n das Buch
+n das Kind
+n das Sofa
+n das Feuerzeug
+n das Bild
+n das Bett
+n das Glas
 n das Handy
-addmeaning Kette "necklace" "chain"
-createdeck objects
+n das Fenster
+addmeaning Brille "óculos"
+addmeaning Buch "livro"
+addmeaning Flasche "garrafa"
+addmeaning Fotoapparat "câmera"
+addmeaning Kette "corrente"
+addmeaning Kugelschreiber "caneta"
+addmeaning Schlüssel "chave"
+addmeaning Tasche "bolsa"
+addmeaning Sessel "poltrona"
+addmeaning Bett "cama"
+addmeaning Lampe "lâmpada"
+addmeaning Bild "pintura"
+addmeaning Stuhl "cadeira"
+addmeaning Tisch "mesa"
+addmeaning Schrank "guarda-roupas"
+addmeaning Teppich "tapete"
+addmeaning Glas "copo"
+addmeaning Tür "porta"
+createdeck house
+add Sessel
+add Bett
 add Lampe
+add Bild
+add Stuhl
+add Tisch
+add Schrank
+add Teppich
+add Tür
+closedeck
+createdeck objects
+add Brille
+add Buch
+add Flasche
+add Fotoapparat
 add Kette
+add Kugelschreiber
+add Schlüssel
+add Tasche
+add Glas
 closedeck

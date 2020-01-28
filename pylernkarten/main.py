@@ -2,6 +2,7 @@ import traceback
 import sys
 import shlex
 import os
+from random import shuffle
 
 class Card:
     def __init__(self,text,back):
@@ -146,11 +147,22 @@ def play_cards(cards_it):
     shuffle(cards)
 
     for card in cards:
-        pass
+        guess = input(card.text + ": " )
+        if card.matches(guess):
+            print("Correct!")
+            input()
+        else:
+            print("Too bad! The correct answer was: " + card.back)
+            return
+
+    print("Well done!")
 
 @command
 def playdeck(name):
-    pass
+    play_cards(
+        Card(list(relations['meaning'][word])[0], word) for
+        word in decks[name]
+    )
 
 @command
 def playreverse(name):
@@ -158,7 +170,9 @@ def playreverse(name):
 
 @command 
 def diederdas(name):
-    pass
+    play_cards(
+        Card(noun, article_of(noun)) for noun in decks[name]
+    )
 
 @command
 def exit():
@@ -198,7 +212,7 @@ def save_deck(f, name, deck):
     f.write("createdeck " + name + "\n")
     for word in deck:
         f.write("add " + word + "\n")
-    f.write("closedeck " + name + "\n")
+    f.write("closedeck\n")
 
 
     
