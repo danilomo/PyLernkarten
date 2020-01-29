@@ -8,9 +8,10 @@ class Card:
     def __init__(self,text,back):
         self.text = text
         self.back = back
+        self.multi_answer = type(back) is set
 
     def matches(self,guess):
-        return self.back == guess or guess in self.back
+        return self.back == guess if not self.multi_answer else guess in self.back
 
     def __str__(self):
         return self.text + "|" + self.back
@@ -31,6 +32,10 @@ def command(func):
 
 def parse_command(string):
     string = string.strip()
+
+    if not string:
+        return lambda: None
+    
     aslist = shlex.split(string)
 
     def _command():
@@ -94,7 +99,7 @@ def clear():
     os.system("clear")
 
 @command
-def showgender(noun):
+def gender(noun):
     if noun not in tags['noun']:
         print("%s is not known or not a noun" % noun)
         return
@@ -103,7 +108,7 @@ def showgender(noun):
     print("The article is " + article)
 
 @command
-def showmeanings(noun):
+def meaning(noun):
     if not relations['meaning'][noun]:
         print('No meanings found.')
         return
@@ -150,7 +155,6 @@ def play_cards(cards_it):
         guess = input(card.text + ": " )
         if card.matches(guess):
             print("Correct!")
-            input()
         else:
             print("Too bad! The correct answer was: " + card.back)
             return
@@ -166,8 +170,10 @@ def playdeck(name):
 
 @command
 def playreverse(name):
-    pass
-
+    play_cards(
+        Card(word, relations['meaning'][word]) for word in decks[name]
+    )
+    
 @command 
 def diederdas(name):
     play_cards(
@@ -238,7 +244,7 @@ def add_default_aliases():
     
 def main_loop():
     while True:
-        command = parse_command(input())
+        command = parse_command(input("> "))
         command()
 
 
