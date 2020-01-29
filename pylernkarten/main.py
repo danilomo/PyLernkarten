@@ -3,6 +3,9 @@ import sys
 import shlex
 import os
 from random import shuffle
+from http.client import HTTPSConnection
+import re
+import urllib.request
 
 class Card:
     def __init__(self,text,back):
@@ -247,6 +250,28 @@ def main_loop():
         command = parse_command(input("> "))
         command()
 
+
+@command
+def savemp3(word):
+    page = download_page(word)
+    link, path = find_download_link(page)
+    urllib.request.urlretrieve(link,filename = path)
+    
+def find_download_link(page):
+    regex = "(upload\.wikimedia\.org\/wikipedia\/commons\/[^\/]+\/[^\/]+\/[^\/]+\.ogg)"
+    link = re.search(regex,page).group(1).split()[0][:-1]
+    file_name = link.split("/")[-1]
+    return ("http://" + link, "./audio/" +file_name)
+
+def download_page(word):
+    base = "de.wiktionary.org"
+    resource = "/wiki/" + word
+    con = HTTPSConnection(base)
+    con.request("GET", resource)
+    resp = con.getresponse()
+
+    return str(resp.read())
+    
 
 add_default_aliases()
 load_workspace()
