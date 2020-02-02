@@ -6,6 +6,7 @@ from random import shuffle
 from http.client import HTTPSConnection
 import re
 import urllib.request
+import subprocess
 
 class Card:
     def __init__(self,text,back):
@@ -28,6 +29,7 @@ relations = {'plural': {}, 'meaning':{}}
 decks = {}
 commands = {}
 current_deck = None
+player_command = "mpv"
 
 def command(func):
     commands[func.__name__] = func
@@ -250,12 +252,28 @@ def main_loop():
         command = parse_command(input("> "))
         command()
 
+def file_name(word):
+    return "./audio/De-" + word + ".ogg"
 
-@command
-def savemp3(word):
+def save_audio(word):
     page = download_page(word)
     link, path = find_download_link(page)
     urllib.request.urlretrieve(link,filename = path)
+
+def play_audio(word):
+    filename = file_name(word)
+    comm = subprocess.run([player_command, filename], capture_output = True)
+    comm.check_returncode()
+
+@command
+def play(word):
+    if not os.path.isfile(word):
+        try:
+            save_audio(word)
+        except:
+            pass
+
+    play_audio(word)
     
 def find_download_link(page):
     regex = "(upload\.wikimedia\.org\/wikipedia\/commons\/[^\/]+\/[^\/]+\/[^\/]+\.ogg)"
