@@ -7,6 +7,9 @@ from http.client import HTTPSConnection
 import re
 import urllib.request
 import subprocess
+import feedparser
+from subprocess import PIPE
+import traceback
 
 class Card:
     def __init__(self,text,back):
@@ -29,7 +32,8 @@ relations = {'plural': {}, 'meaning':{}}
 decks = {}
 commands = {}
 current_deck = None
-player_command = "mpv"
+player_command = "mplayer"
+slowgerman_items = []
 
 def command(func):
     commands[func.__name__] = func
@@ -262,8 +266,14 @@ def save_audio(word):
 
 def play_audio(word):
     filename = file_name(word)
-    comm = subprocess.run([player_command, filename], capture_output = True)
-    comm.check_returncode()
+    comm = subprocess.run([player_command, filename], stdout=PIPE, stderr=PIPE)#capture_output = True)
+
+    try:
+        comm.check_returncode()
+    except:
+        return False
+
+    return True
 
 @command
 def play(word):
@@ -271,9 +281,33 @@ def play(word):
         try:
             save_audio(word)
         except:
-            pass
+            return False
 
-    play_audio(word)
+    return play_audio(word)
+    
+@command
+def listslowgerman():
+    global slowgerman_items
+    index = 1
+    for item in slowgerman_items:
+        print(str(index) + " - " + item["title"])
+        if index % 10 == 0:
+            if input().strip() is 'q':
+                break
+        index = index + 1
+
+def extract_words(text):
+    text = text.replace("\n\n", "\n").replace("?", " ").replace(",", " ").replace(".", " ").replace(":", " ").replace("/", " ")
+    text = text.replace("-", " ").replace("<", " ").replace(">", " ").replace("(", " ").replace(")", " ").replace('"', " ")
+
+    return text
+        
+@command
+def sg2deck(number):
+    item = slowgerman_items[int(number)]
+    summary = extract_words(item["summary"])
+    words = set( word.strip() for word in summary.split() )
+    print(words)
     
 def find_download_link(page):
     regex = "(upload\.wikimedia\.org\/wikipedia\/commons\/[^\/]+\/[^\/]+\/[^\/]+\.ogg)"
@@ -289,7 +323,9 @@ def download_page(word):
     resp = con.getresponse()
 
     return str(resp.read())
-    
+
+feed = feedparser.parse("https://feeds.podcastmirror.com/slowgerman")
+slowgerman_items = list(feed["items"])
 
 add_default_aliases()
 load_workspace()
