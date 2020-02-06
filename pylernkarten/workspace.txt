@@ -1,31 +1,93 @@
+n die Frau
+n die Bar
+n die Pflanze
+n die Uhr
+n die Maus
+n die Orange
 n die Lampe
-n die Tür
-n die Kette
 n die Brille
-n die Flasche
+n die E-Mail
+n die Butter
+n die Briefmarke
+n die Schokolade
+n die Tafel
+n die Couch
+n die Suppe
+n die Rechnung
+n die Haltestelle
+n die Ausstellung
+n die Tür
+n die Milch
+n die SMS
+n die U-Bahn
+n die Kartoffel
+n die Kette
 n die Tasche
+n die Flasche
+n die S-Bahn
+n die Disco
+n die Kneipe
+n die Tomate
 n der Kugelschreiber
-n der Tür
-n der Vater
-n der Bleistift
-n der Schrank
-n der Tisch
-n der Teppich
 n der Fotoapparat
-n der Stuhl
+n der Koffer
+n der Käse
 n der Vorhang
-n der Sessel
+n der Tisch
+n der Drucker
+n der Kuchen
+n der Computer
+n der Apfel
+n der Salat
+n der Mann
+n der Bildschirm
+n der Vater
+n der Stuhl
+n der Bahnsteig
 n der Schlüssel
-n das Heft
-n das Buch
+n der Flughafen
+n der Laptop
+n der Fisch
+n der Tee
+n der Tür
+n der Bleistift
+n der Banhof
+n der Teppich
+n der Schinken
+n der Zug
+n der Schrank
+n der Kalender
+n der Bus
+n der Regenschirm
+n der Stift
+n der Sessel
+n der Braten
+n das Kino
 n das Kind
-n das Sofa
-n das Feuerzeug
-n das Bild
-n das Bett
-n das Glas
 n das Handy
+n das Café
+n das Restaurant
+n das Gepäck
+n das Heft
+n das Formular
+n das Konzert
+n das Gleis
+n das Museum
+n das Bett
+n das Telefon
+n das Feuerzeug
+n das Glas
+n das Sofa
+n das Notizbuch
+n das Fluzeug
+n das Brot
+n das Bild
 n das Fenster
+n das Schwimmbad
+n das Taxi
+n das Theater
+n das Buch
+n das Streichholz
 addmeaning Brille "óculos"
 addmeaning Buch "livro"
 addmeaning Flasche "garrafa"
@@ -54,6 +116,10 @@ add Tisch
 add Schrank
 add Teppich
 add Tür
+add Sofa
+add Fenster
+add Pflanze
+add Couch
 closedeck
 createdeck objects
 add Brille
@@ -65,4 +131,86 @@ add Kugelschreiber
 add Schlüssel
 add Tasche
 add Glas
+add Tafel
 closedeck
+createdeck office
+add Laptop
+add E-Mail
+add Handy
+add SMS
+add Briefmarke
+add Rechnung
+add Telefon
+add Formular
+add Drucker
+add Maus
+add Computer
+add Stift
+add Notizbuch
+add Kalender
+add Bildschirm
+closedeck
+createdeck places
+add Kino
+add Theater
+add Museum
+add Café
+add Ausstellung
+add Disco
+add Schwimmbad
+add Konzert
+add Kneipe
+add Restaurant
+add Bar
+closedeck
+createdeck food
+add Kartoffel
+add Schokolade
+add Kuchen
+add Suppe
+add Apfel
+add Tee
+add Braten
+add Brot
+add Orange
+add Milch
+add Butter
+add Fisch
+add Tomate
+add Salat
+add Käse
+add Schinken
+closedeck
+createdeck transport
+add Banhof
+add Flughafen
+add S-Bahn
+add Taxi
+add Bus
+add Zug
+add U-Bahn
+add Fluzeug
+add Gleis
+add Bahnsteig
+add Koffer
+add Gepäck
+add Haltestelle
+closedeck
+pl Tafel Tafeln
+pl Bleistift Bleistifte
+pl Laptop Laptops
+pl Pflanze Pflanzen
+pl Buch Bücher
+pl Kugelschreiber Kugelschreiber
+pl Stuhl Stühle
+pl Heft Hefte
+pl Glas Gläser
+pl Vorhang Vorhänge
+pl Fenster Fenster
+pl Lampe Lampen
+pl Regenschirm Regenschirme
+pl Streichholz Streichhölzer
+pl Uhr Uhren
+pl Tasche Taschen
+pl Frau Frauen
+pl Mann Männer

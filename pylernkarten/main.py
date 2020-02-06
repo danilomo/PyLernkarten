@@ -32,7 +32,7 @@ relations = {'plural': {}, 'meaning':{}}
 decks = {}
 commands = {}
 current_deck = None
-player_command = "mplayer"
+player_command = "mpv"
 slowgerman_items = []
 
 def command(func):
@@ -47,15 +47,47 @@ def parse_command(string):
     
     aslist = shlex.split(string)
 
+    def _escape(w):
+        return w.replace("_ss_", "ß")
+    
     def _command():
         try:
             comm = commands[aslist[0]]
-            comm(*aslist[1:])
+            args = [ _escape(w) for w in aslist[1:] ]
+            comm(*args)
         except Exception:
             traceback.print_exc(file=sys.stdout)
 
     return _command
 
+@command
+def addplural(noun, plural):
+    if article_of(noun) is None:
+        print("Word does not exist or not a noun.")
+        return
+
+    relations['plural'][noun] = plural
+
+def plural_of(noun):
+    return relations['plural'].get(noun, "")
+    
+@command
+def showplural(noun):
+    print(plural_of(noun))
+
+@command
+def pluraldeck(deck):
+    for w in decks[deck]:
+        print(w + " - " + plural_of(w))
+
+@command
+def playdeck(deck):
+
+    for word in decks[deck]:
+        print(word)
+        play(word)
+
+    
 @command
 def createdeck(name):
     decks[name] = []
@@ -171,7 +203,7 @@ def play_cards(cards_it):
     print("Well done!")
 
 @command
-def playdeck(name):
+def guessdeck(name):
     play_cards(
         Card(list(relations['meaning'][word])[0], word) for
         word in decks[name]
@@ -202,6 +234,8 @@ def article_of(noun):
 
     if noun in tags['das']:
         return 'das'
+
+    return None
     
 def save_nouns(f):
     for noun in tags['die']:
@@ -218,6 +252,10 @@ def save_meanings(f):
     for k, v in relations['meaning'].items():
         ms = ('"%s"' % s for s in v)
         f.write('addmeaning %s %s\n' % (k,' '.join(ms)))
+
+def save_plurals(f):
+    for k, v in relations['plural'].items():
+        f.write('pl %s %s\n' % (k, v))
 
 def save_decks(f):
     for k, v in decks.items():
@@ -236,6 +274,7 @@ def save_workspace():
         save_nouns(f)
         save_meanings(f)
         save_decks(f)
+        save_plurals(f)
 
 def load_workspace():
     try:
@@ -250,6 +289,9 @@ def add_default_aliases():
     createalias("addnoun", "n")
     createalias("addmeaning", "m")
     createalias("listnouns", "ln")
+    createalias("saveworkspace", "sw")
+    createalias("diederdas", "ddd")
+    createalias("addplural", "pl")    
     
 def main_loop():
     while True:
@@ -265,6 +307,7 @@ def save_audio(word):
     urllib.request.urlretrieve(link,filename = path)
 
 def play_audio(word):
+    word = sanitize_word(word)    
     filename = file_name(word)
     comm = subprocess.run([player_command, filename], stdout=PIPE, stderr=PIPE)#capture_output = True)
 
@@ -292,16 +335,21 @@ def listslowgerman():
     for item in slowgerman_items:
         print(str(index) + " - " + item["title"])
         if index % 10 == 0:
-            if input().strip() is 'q':
+            if input().strip() == 'q':
                 break
         index = index + 1
 
 def extract_words(text):
     text = text.replace("\n\n", "\n").replace("?", " ").replace(",", " ").replace(".", " ").replace(":", " ").replace("/", " ")
     text = text.replace("-", " ").replace("<", " ").replace(">", " ").replace("(", " ").replace(")", " ").replace('"', " ")
+    text = text.replace("!", " ").replace("-", " ").replace("_", " ").replace("%", " ").replace("$", " ").replace("#", " ")
 
     return text
-        
+
+@command
+def showcommands():
+    print(list(commands.keys()))
+
 @command
 def sg2deck(number):
     item = slowgerman_items[int(number)]
@@ -315,7 +363,11 @@ def find_download_link(page):
     file_name = link.split("/")[-1]
     return ("http://" + link, "./audio/" +file_name)
 
+def sanitize_word(word):
+    return word.replace("ü", "%C3%BC").replace("ä", "%C3%A4").replace("ü", "%C3%9C").replace("ß", "%C3%9F")
+
 def download_page(word):
+    word = sanitize_word(word)
     base = "de.wiktionary.org"
     resource = "/wiki/" + word
     con = HTTPSConnection(base)
