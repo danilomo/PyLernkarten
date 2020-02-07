@@ -1,6 +1,4 @@
-import traceback
 import sys
-import shlex
 import os
 from random import shuffle
 from http.client import HTTPSConnection
@@ -10,6 +8,10 @@ import subprocess
 import feedparser
 from subprocess import PIPE
 import traceback
+
+import decks
+from commands import command, parse_command, createalias
+
 
 class Card:
     def __init__(self,text,back):
@@ -29,36 +31,8 @@ class Card:
 words = set()
 tags = {'der': set(), 'die': set(), 'das': set(), 'noun': set()}
 relations = {'plural': {}, 'meaning':{}}
-decks = {}
-commands = {}
-current_deck = None
 player_command = "mpv"
 slowgerman_items = []
-
-def command(func):
-    commands[func.__name__] = func
-    return func
-
-def parse_command(string):
-    string = string.strip()
-
-    if not string:
-        return lambda: None
-    
-    aslist = shlex.split(string)
-
-    def _escape(w):
-        return w.replace("_ss_", "ß")
-    
-    def _command():
-        try:
-            comm = commands[aslist[0]]
-            args = [ _escape(w) for w in aslist[1:] ]
-            comm(*args)
-        except Exception:
-            traceback.print_exc(file=sys.stdout)
-
-    return _command
 
 @command
 def addplural(noun, plural):
@@ -79,61 +53,6 @@ def showplural(noun):
 def pluraldeck(deck):
     for w in decks[deck]:
         print(w + " - " + plural_of(w))
-
-@command
-def playdeck(deck):
-
-    for word in decks[deck]:
-        print(word)
-        play(word)
-
-    
-@command
-def createdeck(name):
-    decks[name] = []
-    setdeck(name)
-
-@command
-def setdeck(name):
-    global current_deck
-    current_deck = name
-
-@command
-def closedeck():
-    setdeck(None)
-
-@command
-def add(word):
-    global current_deck
-    
-    if current_deck is None:
-        print("No deck is set")
-        return
-
-    if word not in words:
-        print("This word does not exist.")
-        return
-
-    decks[current_deck].append(word)
-
-
-@command
-def remove(word):
-    global current_deck
-    
-    if current_deck is None:
-        print("No deck is set")
-        return
-
-    if word not in words:
-        print("This word does not exist.")
-        return
-
-    decks[current_deck].remove(word)
-
-@command
-def showdeck(name):
-    print(decks[name])
 
 @command
 def clear():
@@ -175,14 +94,6 @@ def addmeaning(word, *meaning):
 @command
 def listnouns():
     print(tags['noun'])
-
-@command
-def showdecks():
-    print(list(decks.keys()))
-
-@command
-def createalias(comm, alias):
-    commands[alias] = commands[comm]
 
 @command
 def saveworkspace():
@@ -345,10 +256,6 @@ def extract_words(text):
     text = text.replace("!", " ").replace("-", " ").replace("_", " ").replace("%", " ").replace("$", " ").replace("#", " ")
 
     return text
-
-@command
-def showcommands():
-    print(list(commands.keys()))
 
 @command
 def sg2deck(number):
