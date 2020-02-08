@@ -3,6 +3,12 @@ from commands import command
 _decks = {}
 _current_deck = None
 
+def deck(name):
+    return _decks[name]
+
+def items():
+    return _decks.items()
+
 @command
 def showdeck(name):
     print(_decks[name])
@@ -51,3 +57,8 @@ def createdeck(name):
 @command
 def showdecks():
     print(list(_decks.keys()))
+
+@command
+def pluraldeck(deck):
+    for w in decks[deck]:
+        print(w + " - " + plural_of(w))    
