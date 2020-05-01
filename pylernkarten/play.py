@@ -20,7 +20,7 @@ def save_audio(word):
 def play_audio(word):
     word = sanitize_word(word)    
     filename = file_name(word)
-    comm = subprocess.run([_player_command, filename], stdout=PIPE, stderr=PIPE)#capture_output = True)
+    comm = subprocess.run([_player_command, filename], stdout=PIPE, stderr=PIPE)
     try:
         comm.check_returncode()
     except:

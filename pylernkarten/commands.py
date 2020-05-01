@@ -6,6 +6,10 @@ import importlib
 
 _commands = {}
 _modules = {}
+_module_functions = {}
+
+def on_reload(module):
+    pass
 
 def modules():
     return list(_modules.keys())
@@ -14,6 +18,11 @@ def command(func):
     _commands[func.__name__] = func
     module = inspect.getmodule(func)
     _modules[module.__name__] = module
+
+    funcs = _module_functions.get(module.__name__, [])
+    funcs.append(func.__name__)
+    _module_functions[module.__name__] = funcs    
+    
     return func
 
 def parse_command(string):
@@ -66,8 +75,17 @@ def showmodules():
     print(modules())
 
 @command
+def unload(module):
+    for func in _module_functions.get(module, []):
+        del _commands[func]
+        
+    del _module_functions[module]
+    
+@command
 def reload(module):
+    unload(module)
     importlib.reload(_modules[module])
+    on_reload(module)
     
 def main_loop():
     while True:

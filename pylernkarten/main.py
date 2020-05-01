@@ -1,3 +1,4 @@
+import commands
 from commands import createalias, main_loop
 
 import words
@@ -6,6 +7,7 @@ import decks
 import feeds
 import workspace
 import flashcards
+import dictionary
 
 def add_default_aliases():
     createalias("addnoun", "n")
@@ -18,6 +20,8 @@ def add_default_aliases():
 
 add_default_aliases()
 workspace.load_workspace()
+
+commands.on_reload = lambda m: workspace.load_workspace()
 
 main_loop()
 

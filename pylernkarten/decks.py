@@ -61,4 +61,4 @@ def showdecks():
 @command
 def pluraldeck(deck):
     for w in decks[deck]:
-        print(w + " - " + plural_of(w))    
+        print(w + " - " + plural_of(w))
