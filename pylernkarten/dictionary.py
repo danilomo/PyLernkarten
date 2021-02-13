@@ -1,7 +1,12 @@
-from commands import command
+from pylernkarten.commands import command
 import subprocess
 from subprocess import PIPE
 import re
+import sys
+
+if not sys.warnoptions:
+    import warnings
+    warnings.simplefilter("ignore")
 
 _dictcli_de_en = [ "dict", "-d", "german-english" ]
 _dictcli_en_de = [ "dict", "-d", "english-german" ]

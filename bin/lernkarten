@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if ! command -v rlwrap &> /dev/null
+then
+    pylernkarten $1
+else
+    rlwrap pylernkarten $1
+fi

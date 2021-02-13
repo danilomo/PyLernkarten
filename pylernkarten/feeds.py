@@ -1,5 +1,5 @@
 import feedparser
-from commands import command
+from pylernkarten.commands import command
 
 _slowgerman_items = []
 

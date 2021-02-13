@@ -1,4 +1,4 @@
-from commands import command
+from pylernkarten.commands import command
 
 _decks = {}
 _current_deck = None

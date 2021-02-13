@@ -1,13 +1,15 @@
-import commands
-from commands import createalias, main_loop
+import pylernkarten.commands as commands
+from pylernkarten.commands import createalias, main_loop
 
-import words
-import play
-import decks
-import feeds
-import workspace
-import flashcards
-import dictionary
+import pylernkarten.words
+import pylernkarten.play
+import pylernkarten.decks
+import pylernkarten.feeds
+import pylernkarten.workspace as workspace
+import pylernkarten.flashcards
+import pylernkarten.dictionary
+
+import sys
 
 def add_default_aliases():
     createalias("addnoun", "n")
@@ -15,12 +17,13 @@ def add_default_aliases():
     createalias("listnouns", "ln")
     createalias("saveworkspace", "sw")
     createalias("diederdas", "ddd")
-    createalias("addplural", "pl")    
-    
-add_default_aliases()
-workspace.load_workspace()
+    createalias("addplural", "pl")        
 
-commands.on_reload = lambda m: workspace.load_workspace()
+def main():
+    commands.on_reload = lambda m: workspace.load_workspace()
+    add_default_aliases()
+    workspace.load_workspace()
+    main_loop()
 
-main_loop()
-
+if __name__ == "__main__":
+    main()

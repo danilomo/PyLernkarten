@@ -1,5 +1,5 @@
-from commands import command
-from words import article_of, meaning_of
+from pylernkarten.commands import command
+from pylernkarten.words import article_of, meaning_of
 
 class Card:
     def __init__(self,text,back):

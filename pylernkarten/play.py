@@ -5,7 +5,7 @@ from subprocess import PIPE
 import re
 from http.client import HTTPSConnection
 
-from commands import command
+from pylernkarten.commands import command
 
 _player_command = "mplayer"
 

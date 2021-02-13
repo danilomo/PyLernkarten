@@ -3,6 +3,7 @@ import traceback
 import shlex
 import inspect
 import importlib
+import os
 
 _commands = {}
 _modules = {}
@@ -101,8 +102,8 @@ def main_loop():
         try:
             command = parse_command(input("> "))
             command()
-        except KeyboardInterrupt:
+        except KeyboardInterrupt: # ctrl-c
             print()
             pass
-        except EOFError:
+        except EOFError: # ctrl-d
             return

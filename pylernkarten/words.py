@@ -1,4 +1,4 @@
-from commands import command
+from pylernkarten.commands import command
 from random import shuffle
 
 _words = set()

@@ -1,7 +1,7 @@
 import sys
-import words
-import decks
-from commands import command, parse_command
+import pylernkarten.words as words
+import pylernkarten.decks as decks
+from pylernkarten.commands import command, parse_command
 
 def workspace():
     if sys.argv[1:]:
