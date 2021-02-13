@@ -13,6 +13,7 @@ _dictcli_en_de = [ "dict", "-d", "english-german" ]
 _free_dict_eng_deu = [ "dict", "-d", "fd-eng-deu" ]
 _free_dict_deu_eng = [ "dict", "-d", "fd-deu-eng" ]
 
+
 @command
 def parseline():
     left, right = line.split("::")

@@ -39,6 +39,13 @@ def parse_command(string):
     
     def _command():
         try:
+            if not aslist or not aslist[0]:
+                return
+
+            if aslist[0] not in _commands:
+                print(f"Command {aslist[0]} not found.")
+                return
+                
             comm = _commands[aslist[0]]
             args = [ _escape(w) for w in aslist[1:] ]
             result = comm(*args)
@@ -61,10 +68,6 @@ def showcommands(module = ""):
         return str(_module_functions[module])
     else:
         return list(_commands.keys())
-
-@command
-def reload():
-    pass
 
 @command
 def showmodules():
