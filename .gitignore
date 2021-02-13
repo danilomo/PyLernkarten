@@ -1,0 +1,6 @@
+workspace/
+pylernkarten/__pycache__
+pylernkarten.egg-info/
+build/
+dist/
+myenv/

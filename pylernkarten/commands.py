@@ -40,7 +40,10 @@ def parse_command(string):
         try:
             comm = _commands[aslist[0]]
             args = [ _escape(w) for w in aslist[1:] ]
-            comm(*args)
+            result = comm(*args)
+            
+            if result:
+                print(f"Output: {result}")
         except Exception:
             traceback.print_exc(file=sys.stdout)
 
@@ -89,5 +92,11 @@ def reload(module):
     
 def main_loop():
     while True:
-        command = parse_command(input("> "))
-        command()
+        try:
+            command = parse_command(input("> "))
+            command()
+        except KeyboardInterrupt:
+            print()
+            pass
+        except EOFError:
+            return

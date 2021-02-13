@@ -1,6 +1,13 @@
+import sys
 import words
 import decks
 from commands import command, parse_command
+
+def workspace():
+    if sys.argv[1:]:
+        return sys.argv[1]
+    else:
+        return "workspace.txt"
 
 def save_nouns(f):
     for noun in words.feminine():
@@ -33,15 +40,16 @@ def save_deck(f, name, deck):
     f.write("closedeck\n")
     
 def save_workspace():
-    with open("workspace.txt", "w") as f:
+    with open( workspace(), "w") as f:
         save_nouns(f)
         save_meanings(f)
         save_decks(f)
         save_plurals(f)
 
 def load_workspace():
+    print(">>>" + workspace())
     try:
-        with open("workspace.txt") as f:
+        with open(workspace()) as f:
             for line in f:
                 comm = line.strip()
                 parse_command(comm)()

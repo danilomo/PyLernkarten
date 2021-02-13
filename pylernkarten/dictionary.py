@@ -30,8 +30,8 @@ _regex_par = re.compile('(^[^(]*)[(].[^)]*[)](.*)$')
 _regex_bra = re.compile('(^[^[]*)[[].[^]]*[]](.*)$')
 _regex_ang = re.compile('(^[^<]*)[<].[^>]*[>](.*)$')
 
-_de_en_sep = "From German - English Dictionary 1.8 [german-english]:"
-_en_de_sep = "From English - German Dictionary 1.8 [english-german]:"
+_de_en_sep = "From German - English Dictionary 1.8.1 [german-english]:"
+_en_de_sep = "From English - German Dictionary 1.8.1 [english-german]:"
 
 def sanitize(str_):
     return remove_text(remove_text(str_, _regex_par), _regex_bra)
@@ -51,11 +51,13 @@ def process_definition(definition, filter_):
             [i.strip() for i in sanitize(meaning).split(";")]
         )
 
+@command
 def de_en(word):
-    load_word(word, _dictcli_de_en, _de_en_sep, _regex_gender_singular)
+    return load_word(word, _dictcli_de_en, _de_en_sep, _regex_gender_singular)
 
+@command
 def en_de(word):
-    load_word(word, _dictcli_en_de, _en_de_sep, re.compile(".*"))
+    return load_word(word, _dictcli_en_de, _en_de_sep, re.compile(".*"))
     
 def load_word(word, command, separator, filter_):
     output = call_dict(word, command)
@@ -63,6 +65,7 @@ def load_word(word, command, separator, filter_):
         str_.strip() for str_ in
         output.split(separator)
     ]
+
     definitions = (process_definition(str_, filter_) for str_ in definitions[1:])
     definitions = [def_ for def_ in definitions if def_ is not None]
 
@@ -71,14 +74,15 @@ def load_word(word, command, separator, filter_):
 
     gender = definitions[0][1]
     definitions = set(def_ for defs in definitions  for def_ in defs[2] if def_)
-    print((gender, definitions))
+
+    return (gender, definitions)
 
 @command
-def free_dict_eng_deu(word):
-    return(free_dict(word, _free_dict_eng_deu))
+def fd_eng(word):
+    return free_dict(word, _free_dict_eng_deu)
     
 @command
-def free_dict_deu_eng(word):
+def fd_de(word):
     return free_dict(word, _free_dict_deu_eng)
 
 def free_dict(word, command):
@@ -99,8 +103,13 @@ def free_dict(word, command):
 def find_plural(word):
     import pattern.en
     
-    translation = free_dict_deu_eng(word)
+    translation = fd_de(word)
+
+    if not translation:
+        return None
+    
     plural = [pattern.en.pluralize(w) for w in translation]
+    result = [fd_eng(p) for p in plural]
 
-
-    print([free_dict_eng_deu(p) for p in plural])
+    if result and result[0]:
+        return result[0][0]

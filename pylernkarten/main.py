@@ -17,7 +17,6 @@ def add_default_aliases():
     createalias("diederdas", "ddd")
     createalias("addplural", "pl")    
     
-
 add_default_aliases()
 workspace.load_workspace()
 
