@@ -46,8 +46,7 @@ def save_workspace():
         save_decks(f)
         save_plurals(f)
 
-def load_workspace():
-    print(">>>" + workspace())
+def load_workspace():    
     try:
         with open(workspace()) as f:
             for line in f:

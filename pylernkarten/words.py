@@ -25,10 +25,6 @@ def meaning_of(word):
 
 @command
 def addplural(noun, plural):
-    #if article_of(noun) is None:
-    #    print("Word does not exist or not a noun: " + noun)
-    #    return
-
     _relations['plural'][noun] = plural
 
 def plural_of(noun):

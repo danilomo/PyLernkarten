@@ -43,7 +43,8 @@ def parse_command(string):
             result = comm(*args)
             
             if result:
-                print(f"Output: {result}")
+                print(result)
+                
         except Exception:
             traceback.print_exc(file=sys.stdout)
 
@@ -54,8 +55,11 @@ def createalias(comm, alias):
     _commands[alias] = _commands[comm]
 
 @command
-def showcommands():
-    print(list(_commands.keys()))
+def showcommands(module = ""):
+    if module:
+        return str(_module_functions[module])
+    else:
+        return list(_commands.keys())
 
 @command
 def reload():
@@ -80,14 +84,16 @@ def showmodules():
 @command
 def unload(module):
     for func in _module_functions.get(module, []):
-        del _commands[func]
-        
-    del _module_functions[module]
+        if func in _commands:
+            del _commands[func]
     
 @command
 def reload(module):
     unload(module)
-    importlib.reload(_modules[module])
+    try:
+        importlib.reload(_modules[module])
+    except Exception as e:
+        print(e)
     on_reload(module)
     
 def main_loop():
