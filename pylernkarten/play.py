@@ -33,7 +33,8 @@ def play(word):
     if not os.path.isfile(word):
         try:
             save_audio(word)
-        except:
+        except Exception as ex:
+            print(ex)
             return False
 
     return play_audio(word)

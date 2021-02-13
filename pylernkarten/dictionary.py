@@ -13,6 +13,29 @@ _dictcli_en_de = [ "dict", "-d", "english-german" ]
 _free_dict_eng_deu = [ "dict", "-d", "fd-eng-deu" ]
 _free_dict_deu_eng = [ "dict", "-d", "fd-deu-eng" ]
 
+class Die:
+    pass
+class Der:
+    pass
+class Das:
+    pass
+
+genders = {
+    "{m}": "Der",
+    "{f}": "Die",
+    "{n}": "Das"
+}
+
+def summary(word):
+    output = de_en(word)
+    output = output if output else []
+    gender = output[0] if output else None
+    meaning = fd_de(word)
+    meaning = meaning if meaning else output[1:]
+    if gender and meaning:
+        return (word, gender, meaning)
+    else:
+        return None
 
 @command
 def parseline():
@@ -47,7 +70,7 @@ def remove_text(str_, _regex):
     return str_ if m is None else m.group(1) + remove_text(m.group(2), _regex)
 
 def process_definition(definition, filter_):
-    word, gender_line, meaning = (i.strip() for i in list(definition.split("\n"))[0:3])
+    word, gender_line, meaning = (i.strip() for i in list(definition.split("\n"))[0:3] if definition)
     gender_line = sanitize(gender_line).strip()
 
     if filter_.match(gender_line):
@@ -70,7 +93,7 @@ def load_word(word, command, separator, filter_):
     definitions = [
         str_.strip() for str_ in
         output.split(separator)
-    ]
+    ] if output else []
 
     definitions = (process_definition(str_, filter_) for str_ in definitions[1:])
     definitions = [def_ for def_ in definitions if def_ is not None]
@@ -79,6 +102,8 @@ def load_word(word, command, separator, filter_):
         return None
 
     gender = definitions[0][1]
+    gender = genders[gender]
+    
     definitions = set(def_ for defs in definitions  for def_ in defs[2] if def_)
 
     return (gender, definitions)

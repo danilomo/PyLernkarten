@@ -1,4 +1,6 @@
 from pylernkarten.commands import command
+from pylernkarten.dictionary import summary
+from pylernkarten.words import *
 
 _decks = {}
 _current_deck = None
@@ -11,7 +13,7 @@ def items():
 
 @command
 def showdeck(name):
-    print(_decks[name])
+    return _decks[name]
 
 @command
 def setdeck(name):
@@ -62,3 +64,29 @@ def showdecks():
 def pluraldeck(deck):
     for w in decks[deck]:
         print(w + " - " + plural_of(w))
+
+@command
+def load_xlsx(filename):
+    from openpyxl import load_workbook
+
+    workbook = load_workbook(
+        filename=filename
+    )
+    sheets = workbook.worksheets
+    
+    for sheet in sheets:
+        createdeck(sheet.title)
+
+        words = (
+            summary(row[0])
+            for row in
+            sheet.values
+            if summary(row[0])
+        )
+
+        for word, gender, meaning in words:
+            addnoun(gender.lower(), word)
+            add(word)
+            addmeaning(word, str(meaning))
+            
+        closedeck()

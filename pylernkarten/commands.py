@@ -50,13 +50,19 @@ def parse_command(string):
             args = [ _escape(w) for w in aslist[1:] ]
             result = comm(*args)
             
-            if result:
+            if result and type(result) != str and is_iterable(result):
+                print_iterable(result)
+            elif result:
                 print(result)
                 
         except Exception:
             traceback.print_exc(file=sys.stdout)
 
     return _command
+
+def print_iterable(value):
+    for val in value:
+        print(f" - {val}")
 
 @command
 def createalias(comm, alias):
@@ -65,13 +71,13 @@ def createalias(comm, alias):
 @command
 def showcommands(module = ""):
     if module:
-        return str(_module_functions[module])
+        return _module_functions[module]
     else:
-        return list(_commands.keys())
+        return _commands.keys()
 
 @command
 def showmodules():
-    print(_modules)
+    return _modules.keys()
 
 @command
 def exit():
@@ -80,10 +86,6 @@ def exit():
 @command
 def clear():
     os.system("clear")
-    
-@command
-def showmodules():
-    print(modules())
 
 @command
 def unload(module):
@@ -99,6 +101,13 @@ def reload(module):
     except Exception as e:
         print(e)
     on_reload(module)
+
+def is_iterable(value):
+    try:
+        iter(value)
+        return True
+    except:
+        return False
     
 def main_loop():
     while True:

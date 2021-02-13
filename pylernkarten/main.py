@@ -9,8 +9,6 @@ import pylernkarten.workspace as workspace
 import pylernkarten.flashcards
 import pylernkarten.dictionary
 
-import sys
-
 def add_default_aliases():
     createalias("addnoun", "n")
     createalias("addmeaning", "m")

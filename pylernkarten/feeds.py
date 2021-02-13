@@ -1,12 +1,14 @@
 import feedparser
 from pylernkarten.commands import command
+from pylernkarten.dictionary import *
 
-_slowgerman_items = []
+slowgerman_items = []
 
 @command
 def loadsg():
+    global slowgerman_items
     feed = feedparser.parse("https://feeds.podcastmirror.com/slowgerman")
-    _slowgerman_items = list(feed["items"])
+    slowgerman_items = list(feed["items"])
 
 @command
 def listsg():
@@ -26,9 +28,31 @@ def extract_words(text):
 
     return text
 
+def validate_word(word):
+    try:
+        float(word)
+        return False
+    except:
+        pass
+
+    return True
+    
+
 @command
-def sg2deck(number):
+def show_words(number, filter = ""):
+    global slowgerman_items
     item = slowgerman_items[int(number)]
     summary = extract_words(item["summary"])
-    words = set( word.strip() for word in summary.split() )
-    print(words)    
+
+    words = {
+        word.strip(): fd_de(word.strip()) for word in summary.split()
+        if validate_word(word.strip())
+    }
+
+    return (
+        f"{word}: {str(meaning)}"
+        for word, meaning in words.items()
+        if meaning and filter.lower() in word.lower()
+    )
+
+    

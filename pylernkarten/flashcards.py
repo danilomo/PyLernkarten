@@ -1,5 +1,8 @@
+from random import shuffle
 from pylernkarten.commands import command
 from pylernkarten.words import article_of, meaning_of
+from pylernkarten.dictionary import *
+import pylernkarten.decks as decks
 
 class Card:
     def __init__(self,text,back):
