@@ -12,10 +12,10 @@ def masculine():
     return _tags['der']
 
 def feminine():
-    return _tags['der']
+    return _tags['die']
 
 def neutral():
-    return _tags['der']
+    return _tags['das']
 
 def meanings():
     return _relations['meaning'].items()

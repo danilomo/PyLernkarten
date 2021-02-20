@@ -1,0 +1,733 @@
+n die suppe
+n die frau
+n die person
+n die größe
+n die schwester
+n die milch
+n die tür
+n die frage
+n die fahrt
+n die gemeinde
+n die reinigung
+n die lehrerin
+n die wohnung
+n die toilette
+n die bahn
+n die seife
+n die öffentlichkeit
+n die schüssel
+n die tasse
+n die ärztin
+n die professorin
+n die orange
+n die mannschaft
+n die kleidung
+n die leiterin
+n die maus
+n die bevölkerung
+n die zahl
+n die kartoffel
+n die zahnbürste
+n die schokolade
+n die werkstatt
+n die flasche
+n die nummer
+n die partnerschaft
+n die studentin
+n die speisekarte
+n die tomate
+n die hose
+n die bedienung
+n die kuh
+n die wand
+n die heizung
+n die biene
+n die lampe
+n die strecke
+n die freundin
+n die bushaltestelle
+n die kosmetik
+n die feuerwehr
+n die spezialität
+n die ente
+n die dame
+n die reise
+n die hälfte
+n die telefonnummer
+n die gruppe
+n die treppe
+n die farbe
+n die schülerin
+n die mitarbeiterin
+n die zitrone
+n die batterie
+n die großmutter
+n die jacke
+n die summe
+n die fliege
+n die integration
+n die mitgliedschaft
+n die antwort
+n die entschuldigung
+n die mutter
+n die tasche
+n die tour
+n die katze
+n die küche
+n der kaffee
+n der schlaf
+n der orangensaft
+n der name
+n der herr
+n der bus
+n der stadtplan
+n der rock
+n der lehrer
+n der trainer
+n der nutzer
+n der arbeitgeber
+n der architekt
+n der bau
+n der keller
+n der saft
+n der mitarbeiter
+n der bauer
+n der löffel
+n der heimwerker
+n der teilnehmer
+n der haushalt
+n der händler
+n der schlüssel
+n der käse
+n der gast
+n der verein
+n der fahrer
+n der entwickler
+n der betreiber
+n der gegner
+n der koch
+n der arzt
+n der ratgeber
+n der spiegel
+n der reiseführer
+n der zug
+n der sohn
+n der richter
+n der besucher
+n der stuhl
+n der schüler
+n der zucker
+n der arbeitnehmer
+n der fisch
+n der student
+n der freund
+n der knopf
+n der mantel
+n der vorname
+n der empfänger
+n der mietwagen
+n der bürger
+n der autor
+n der wohnort
+n der schmuck
+n der transport
+n der hersteller
+n der besuch
+n der flug
+n der tourismus
+n der verbraucher
+n der vater
+n der pass
+n der tisch
+n der wein
+n der bruder
+n der leiter
+n der tor
+n der weber
+n der apfelsaft
+n der einwohner
+n der partner
+n der apfel
+n der verkehr
+n der bürgermeister
+n der schweizer
+n der beruf
+n der bär
+n der umzug
+n der hut
+n der anfänger
+n der hund
+n der senior
+n der hunger
+n der balkon
+n der verkäufer
+n der teller
+n der geschäftsführer
+n der professor
+n der großvater
+n der schneider
+n der meister
+n der regenschirm
+n der durst
+n der verfasser
+n der bettbezug
+n der weg
+n der vegetarier
+n der käufer
+n der vogel
+n der raum
+n der mann
+n der schuh
+n der liter
+n das abendessen
+n das wasser
+n das paar
+n das öl
+n das dach
+n das getränk
+n das hähnchen
+n das insekt
+n das baby
+n das englisch
+n das rezept
+n das salz
+n das werkzeug
+n das glas
+n das boot
+n das mitglied
+n das bier
+n das licht
+n das reis
+n das deutsch
+n das fenster
+n das buch
+n das gerät
+n das gemüse
+n das sofa
+n das spielzeug
+n das französisch
+n das menü
+n das fleisch
+n das frühstück
+n das fahrzeug
+n das kleid
+n das abenteuer
+n das pferd
+n das ei
+n das handwerk
+n das publikum
+n das geschlecht
+n das schlafzimmer
+n das bad
+n das mädchen
+n das haustier
+n das tee
+n das hemd
+n das möbel
+n das haus
+n das mittagessen
+n das bett
+n das essen
+n das rot
+n das brot
+n das junge
+n das tier
+n das leder
+n das kind
+n das verhältnis
+n das obst
+n das personal
+n das prozent
+n das auto
+addmeaning hunger "['hunger']"
+addmeaning brot "['bread']"
+addmeaning mädchen "['colleen', 'girl', 'girls', 'lass', 'lassie', 'maid', 'maids', 'wench', 'wenches']"
+addmeaning wasser "['aquatic']"
+addmeaning durst "['thirst']"
+addmeaning milch "['milk']"
+addmeaning buch "['book', 'quire']"
+addmeaning käufer "['buyer', 'purchaser', 'vendee', 'vendees']"
+addmeaning englisch "['English']"
+addmeaning person "['character', 'person']"
+addmeaning größe "['bigness', 'bulk', 'extent', 'grandness', 'greatness', 'grossness', 'item', 'largeness', 'magnitude', 'sizableness', 'size', 'variable']"
+addmeaning rot "['red', 'ruddy']"
+addmeaning koch "['culinary']"
+addmeaning entwickler "['developer', 'developers']"
+addmeaning weber "['weaver', 'weavers']"
+addmeaning reiseführer "['guide', 'guide books', 'guidebook']"
+addmeaning spezialität "['speciality']"
+addmeaning betreiber "['carrier']"
+addmeaning handwerk "['craft', 'handicraft', 'handwork', 'trade']"
+addmeaning verfasser "['author', 'authors', 'drafter', 'essayist', 'writer']"
+addmeaning arbeitnehmer "['employee']"
+addmeaning werkstatt "['workshop']"
+addmeaning empfänger "['acceptor', 'addressee', 'consignee', 'listener', 'radio receiver', 'receiver', 'receivers', 'receptionist', 'receptor', 'recipient', 'recipients', 'transceiver']"
+addmeaning bedienung "['handling', 'operating', 'operation', 'service']"
+addmeaning verkäufer "['salesman', 'seller', 'sellers', 'shopman', 'shopmen', 'vender', 'venders', 'vendor', 'vendors']"
+addmeaning beruf "['career', 'job', 'occupation', 'profession', 'trade']"
+addmeaning feuerwehr "['fire brigade', 'firedepartment']"
+addmeaning fahrer "['driver', 'drivers']"
+addmeaning teilnehmer "['entrant', 'number of participants', 'participant', 'participants', 'partner']"
+addmeaning architekt "['architect']"
+addmeaning schneider "['sartorial', 'tailor', 'tailors']"
+addmeaning mitarbeiter "['assistants']"
+addmeaning mitarbeiterin "({'staffer', 'cooperator', 'coworker', 'staff member', 'co-worker', 'collaborator'},)"
+addmeaning hersteller "['fabricator', 'manufacturer', 'producer']"
+addmeaning bürgermeister "['mayor', 'mayors']"
+addmeaning bauer "['boor', 'farmer', 'grower', 'hans', 'pawn', 'peasant']"
+addmeaning professor "['professor']"
+addmeaning leiterin "['managress']"
+addmeaning leiter "['ladder', 'leader', 'manager', 'superintendent', 'superintendents']"
+addmeaning geschäftsführer "['Executive Director', 'factor', 'manager', 'managing director']"
+addmeaning arbeitgeber "['employer', 'employers', 'taskmaster']"
+addmeaning professorin "({'full professor', 'professor /Prof./'},)"
+addmeaning student "['collegian', 'student', 'undergraduate']"
+addmeaning studentin "['co ed']"
+addmeaning händler "['dealer', 'dealers', 'monger', 'outfitter', 'purchasers', 'retailer', 'salesman', 'salesmen', 'salesperson', 'trader']"
+addmeaning meister "['adept', 'champion', 'foreman', 'masters']"
+addmeaning senior "['senior']"
+addmeaning autor "['author', 'writer']"
+addmeaning trainer "['coach', 'trainer', 'trainers']"
+addmeaning ärztin "({'doctor', 'medical doctor /M.D./', 'medic', 'physician'},)"
+addmeaning schüler "['disciple', 'disciples', 'pupil', 'pupils', 'schoolboy', 'schoolboys', 'sophomore']"
+addmeaning schülerin "['schoolgirl']"
+addmeaning arzt "['doctor', 'physician']"
+addmeaning richter "['bench', 'judge', 'judges']"
+addmeaning lehrer "['indoctrinator', 'instructor', 'schoolmaster', 'teacher', 'teachers', 'tutor', 'tutors']"
+addmeaning lehrerin "['schoolmistress']"
+addmeaning farbe "['color [Am.]', 'colour [Br.]', 'paint', 'tint']"
+addmeaning bushaltestelle "({'bus stop'},)"
+addmeaning ratgeber "['adviser', 'counsellor']"
+addmeaning bahn "['alley', 'course', 'pathway', 'railway', 'tram', 'web']"
+addmeaning schweizer "({'dairyman', 'milker', 'Swiss'},)"
+addmeaning tour "['tour']"
+addmeaning transport "['carriage', 'conveyance', 'freightage', 'portage', 'porterage', 'traction', 'transport', 'transportation']"
+addmeaning besuch "['visit', 'visitation']"
+addmeaning abenteuer "['adventure', 'adventures']"
+addmeaning verkehr "['commerce', 'communication', 'intercourse', 'traffic']"
+addmeaning mietwagen "['hired car']"
+addmeaning strecke "['line', 'route', 'stretch', 'way']"
+addmeaning fahrt "['drive', 'journey', 'ride', 'run']"
+addmeaning stadtplan "['city map']"
+addmeaning flug "['flight']"
+addmeaning tourismus "({'tourism'},)"
+addmeaning weg "['alley', 'lane', 'path', 'road', 'way']"
+addmeaning reise "['travelller']"
+addmeaning fahrzeug "['automotive', 'vehicular']"
+addmeaning boot "['boat']"
+addmeaning pass "['pass', 'passport']"
+addmeaning auto "['auto', 'automobile', 'car', 'motorcar']"
+addmeaning zug "['draught', 'lineament', 'strain', 'traction', 'tractive', 'train', 'trait', 'tug']"
+addmeaning bus "['bus']"
+addmeaning verbraucher "['consumer']"
+addmeaning einwohner "['habitant', 'inhabitant', 'inhabitants']"
+addmeaning integration "['integration']"
+addmeaning mitgliedschaft "['membership']"
+addmeaning nutzer "({'user'},)"
+addmeaning geschlecht "['gender', 'sex']"
+addmeaning gast "['guest', 'sojourner']"
+addmeaning anfänger "['amateur', 'beginner', 'beginners', 'newcomer', 'novice', 'novices', 'rookie', 'tenderfeet', 'tiro', 'tyro']"
+addmeaning gemeinde "['community', 'congregational', 'parish', 'township']"
+addmeaning öffentlichkeit "['publicness']"
+addmeaning besucher "['caller', 'visitor', 'visitors']"
+addmeaning bevölkerung "['population']"
+addmeaning gruppe "['bank', 'bracket', 'element group', 'gang', 'group', 'lot', 'squad', 'tern']"
+addmeaning personal "['personal']"
+addmeaning vorname "['first name', 'firstname', 'forename']"
+addmeaning publikum "['audience', 'the public']"
+addmeaning name "['name']"
+addmeaning verhältnis "['proportion', 'rate', 'ratio', 'relationship']"
+addmeaning dame "['dame', 'lady', 'madam']"
+addmeaning gegner "['adversaries', 'adversary', 'antis', 'deprecator', 'objector', 'objectors', 'opponent', 'opposer']"
+addmeaning mannschaft "['crew', 'team', 'workmanship']"
+addmeaning bürger "['bourgeois', 'burgess', 'burgesses', 'burgher', 'citizen', 'citizens', 'commoner', 'townsman', 'townsmen']"
+addmeaning heimwerker "({'handyman', 'do-it-yourselfer'},)"
+addmeaning mann "['husband', 'man']"
+addmeaning verein "['club', 'society', 'union']"
+addmeaning herr "['gent', 'gentleman', 'master', 'mister', 'Mr.', 'signor', 'sir']"
+addmeaning mitglied "['insider', 'member', 'vigilante']"
+addmeaning französisch "['French']"
+addmeaning frau "['femme', 'mrs', 'signora', 'wife', 'woman']"
+addmeaning deutsch "['German']"
+addmeaning baby "['babe', 'baby']"
+addmeaning freundin "['friend', 'girlfriend']"
+addmeaning freund "['boyfriend', 'friend']"
+addmeaning junge "['boy', 'oh boy!']"
+addmeaning kind "['child', 'infant', 'kid', 'kiddy']"
+addmeaning teller "['plate']"
+addmeaning schüssel "['bowl', 'dish', 'tureen']"
+addmeaning hose "['pantaloon', 'pants', 'trouser', 'trousers']"
+addmeaning mantel "['cloak', 'coat', 'jacket', 'liner', 'mantle', 'shell']"
+addmeaning pferd "['horse', 'knight']"
+addmeaning zahnbürste "['tooth-brush', 'toothbrush']"
+addmeaning batterie "['battery']"
+addmeaning regenschirm "['umbrella']"
+addmeaning glas "['glass', 'glassware', 'jar']"
+addmeaning löffel "['spoon', 'spoonful', 'spoons', 'teaspoon', 'teaspoons']"
+addmeaning wohnort "['place of residence', 'residence']"
+addmeaning küche "['cuisine', 'kitchen']"
+addmeaning werkzeug "['artifact', 'instrument', 'tool', 'tool kit']"
+addmeaning heizung "['firing', 'heater', 'heating']"
+addmeaning keller "['basement', 'cellar', 'cellars']"
+addmeaning reinigung "['chores', 'purgation']"
+addmeaning bad "['bath', 'spa']"
+addmeaning treppe "['a flight of steps', 'staircase', 'stairs', 'stairway [Am.]']"
+addmeaning lampe "['lamp']"
+addmeaning stuhl "['chair']"
+addmeaning apfelsaft "['apple juice', 'cider']"
+addmeaning fleisch "['flesh', 'meat']"
+addmeaning tomate "['tomato']"
+addmeaning orange "['orange']"
+addmeaning gemüse "['vegetable', 'vegetables']"
+addmeaning zahl "['digit', 'figure', 'number']"
+addmeaning prozent "['per cent', 'percent', 'percentage']"
+addmeaning hälfte "['half', 'moiety']"
+addmeaning summe "['aggregate', 'amount', 'sum']"
+addmeaning telefonnummer "['telephone number']"
+addmeaning paar "['couple', 'pair', 'twosome']"
+addmeaning liter "['litre', 'litres']"
+addmeaning nummer "['issue', 'number']"
+addmeaning vater "['begetter', 'father']"
+addmeaning mutter "['mom', 'mommy', 'mother', 'nut']"
+addmeaning kleidung "['apparel', 'clothes', 'clothing', 'raiment', 'wardrobe', 'wear']"
+addmeaning schuh "['shoe']"
+addmeaning hemd "['chemise', 'shirt']"
+addmeaning frage "['interrogation', 'query', 'quest', 'question']"
+addmeaning antwort "['answer', 'reply', 'replying', 'responds', 'response']"
+addmeaning bettbezug "['plumeau case']"
+addmeaning seife "['placer', 'soap']"
+addmeaning flasche "['bottle', 'flagon']"
+addmeaning öl "['oil']"
+addmeaning tasse "['cup']"
+addmeaning schlaf "['shuteye', 'sleep']"
+addmeaning haushalt "['household', 'menage']"
+addmeaning spiegel "['glass', 'looking-glass', 'mirror', 'mirrors', 'reflector']"
+addmeaning möbel "['furniture']"
+addmeaning umzug "({'moving', 'removal', 'relocation', 'pageant', 'procession', 'move'},)"
+addmeaning raum "['cubically']"
+addmeaning wand "['septum', 'wall']"
+addmeaning gerät "['appliance', 'console', 'device', 'equipment', 'gadget', 'gadgetry', 'tabletop', 'tackle', 'tool', 'unit', 'utensil']"
+addmeaning schlafzimmer "['bedroom', 'bedrooms']"
+addmeaning tor "['gate']"
+addmeaning spielzeug "['plaything', 'toy']"
+addmeaning dach "['housetop', 'roof']"
+addmeaning balkon "['balcony']"
+addmeaning bau "['building', 'fabric']"
+addmeaning licht "['light']"
+addmeaning fenster "['window', 'windows']"
+addmeaning tür "({'door', 'doorway'},)"
+addmeaning wohnung "['apartment [Am.]', 'dwelling', 'flat', 'habitation', 'tenement']"
+addmeaning bett "['bed']"
+addmeaning tisch "['board', 'desk', 'table']"
+addmeaning schlüssel "['crypto']"
+addmeaning sofa "['davenport', 'settee', 'sofa']"
+addmeaning toilette "['lavatory', 'restroom [Am.]', 'toilet']"
+addmeaning haus "['interoffice']"
+addmeaning großvater "['granddad', 'grandfather']"
+addmeaning schwester "['sis', 'sister']"
+addmeaning partnerschaft "['partnership']"
+addmeaning großmutter "['grandma', 'grandmother']"
+addmeaning partner "['mate', 'mates', 'pard', 'pards', 'partner']"
+addmeaning sohn "['son']"
+addmeaning bruder "['brother']"
+addmeaning kosmetik "['beauty culture', 'cosmetic']"
+addmeaning tasche "['bag', 'catchall', 'pocket']"
+addmeaning knopf "['button', 'knob', 'knop', 'nub', 'stud']"
+addmeaning leder "['buff', 'leather']"
+addmeaning jacke "['jacket', 'jerkin']"
+addmeaning schmuck "['emblazonment', 'emblazonments', 'jewellery', 'jewelry', 'panoply', 'trappings', 'trinket']"
+addmeaning hut "['hat']"
+addmeaning rock "['skirt']"
+addmeaning kleid "['dress', 'frock', 'gown']"
+addmeaning zitrone "['citron', 'lemon']"
+addmeaning vegetarier "['vegetarian', 'vegetarians']"
+addmeaning bier "['ale', 'beer']"
+addmeaning rezept "['formula', 'prescription', 'recipe']"
+addmeaning kartoffel "['potato']"
+addmeaning zucker "['sugar']"
+addmeaning apfel "['apple']"
+addmeaning frühstück "['breakfast']"
+addmeaning orangensaft "({'orange juice'},)"
+addmeaning ei "['egg']"
+addmeaning getränk "['beverage', 'drink', 'potation']"
+addmeaning schokolade "['chocolate']"
+addmeaning obst "['fruit']"
+addmeaning abendessen "['dinner', 'supper', 'suppers']"
+addmeaning mittagessen "['lunch', 'lunches', 'tiffin', 'tiffins']"
+addmeaning fisch "['finny', 'fish', 'porgies']"
+addmeaning biene "['bee', 'cootie']"
+addmeaning ente "['canard', 'duck']"
+addmeaning kuh "['cow']"
+addmeaning fliege "['fly']"
+addmeaning insekt "['insect']"
+addmeaning maus "['mouse']"
+addmeaning tier "['animal', 'beast', 'brute']"
+addmeaning bär "['bear']"
+addmeaning katze "['cat', 'tabby']"
+addmeaning entschuldigung "['apology', 'excuse', 'excuse me', 'sorry']"
+addmeaning haustier "['domestic animal', 'pet']"
+addmeaning vogel "['bird']"
+addmeaning hund "['dog', 'hound']"
+addmeaning speisekarte "['bill of fare', 'menu']"
+addmeaning wein "['tartaric']"
+addmeaning salz "['salt']"
+addmeaning menü "['menu', 'menue']"
+addmeaning saft "['juice', 'sap']"
+addmeaning hähnchen "['chockerel']"
+addmeaning essen "['meal']"
+addmeaning käse "['cheese']"
+addmeaning kaffee "['coffee']"
+addmeaning suppe "['potage', 'soup']"
+addmeaning reis "['rice']"
+addmeaning tee "['tea']"
+createdeck duolingo_nouns_1
+add hunger
+add brot
+add mädchen
+add wasser
+add durst
+add milch
+add buch
+add käufer
+add englisch
+add person
+add größe
+add rot
+add koch
+add entwickler
+add weber
+add reiseführer
+add spezialität
+add betreiber
+add handwerk
+add verfasser
+add arbeitnehmer
+add werkstatt
+add empfänger
+add bedienung
+add verkäufer
+add beruf
+add feuerwehr
+add fahrer
+add teilnehmer
+add architekt
+add schneider
+add mitarbeiter
+add mitarbeiterin
+add hersteller
+add bürgermeister
+add bauer
+add professor
+add leiterin
+add leiter
+add geschäftsführer
+add arbeitgeber
+add professorin
+add student
+add studentin
+add händler
+add meister
+add senior
+add autor
+add trainer
+add ärztin
+closedeck
+createdeck duolingo_nouns_2
+add schüler
+add schülerin
+add arzt
+add richter
+add lehrer
+add lehrerin
+add farbe
+add bushaltestelle
+add ratgeber
+add bahn
+add schweizer
+add tour
+add transport
+add besuch
+add abenteuer
+add verkehr
+add mietwagen
+add strecke
+add fahrt
+add stadtplan
+add flug
+add tourismus
+add weg
+add reise
+add fahrzeug
+add boot
+add pass
+add auto
+add zug
+add bus
+add verbraucher
+add einwohner
+add integration
+add mitgliedschaft
+add nutzer
+add geschlecht
+add gast
+add anfänger
+add gemeinde
+add öffentlichkeit
+add besucher
+add bevölkerung
+add gruppe
+add personal
+add vorname
+add publikum
+add name
+add verhältnis
+add dame
+add gegner
+closedeck
+createdeck duolingo_nouns_3
+add mannschaft
+add bürger
+add heimwerker
+add mann
+add verein
+add herr
+add mitglied
+add französisch
+add frau
+add deutsch
+add baby
+add freundin
+add freund
+add junge
+add kind
+add teller
+add schüssel
+add hose
+add mantel
+add pferd
+add zahnbürste
+add batterie
+add regenschirm
+add glas
+add löffel
+add wohnort
+add küche
+add werkzeug
+add heizung
+add keller
+add reinigung
+add bad
+add treppe
+add lampe
+add stuhl
+add apfelsaft
+add fleisch
+add tomate
+add orange
+add gemüse
+add zahl
+add prozent
+add hälfte
+add summe
+add telefonnummer
+add paar
+add liter
+add nummer
+add vater
+add mutter
+closedeck
+createdeck duolingo_nouns_4
+add kleidung
+add schuh
+add hemd
+add frage
+add antwort
+add bettbezug
+add seife
+add flasche
+add öl
+add tasse
+add schlaf
+add haushalt
+add spiegel
+add möbel
+add umzug
+add raum
+add wand
+add gerät
+add schlafzimmer
+add tor
+add spielzeug
+add dach
+add balkon
+add bau
+add licht
+add fenster
+add tür
+add wohnung
+add bett
+add tisch
+add schlüssel
+add sofa
+add toilette
+add haus
+add großvater
+add schwester
+add partnerschaft
+add großmutter
+add partner
+add sohn
+add bruder
+add kosmetik
+add tasche
+add knopf
+add leder
+add jacke
+add schmuck
+add hut
+add rock
+add kleid
+closedeck
+createdeck duolingo_nouns_5
+add zitrone
+add vegetarier
+add bier
+add rezept
+add kartoffel
+add zucker
+add apfel
+add frühstück
+add orangensaft
+add ei
+add getränk
+add schokolade
+add obst
+add abendessen
+add mittagessen
+add fisch
+add biene
+add ente
+add kuh
+add fliege
+add insekt
+add maus
+add tier
+add bär
+add katze
+add entschuldigung
+add haustier
+add vogel
+add hund
+add speisekarte
+add wein
+add salz
+add menü
+add saft
+add hähnchen
+add essen
+add käse
+add kaffee
+add suppe
+add reis
+add tee
+closedeck

@@ -13,7 +13,7 @@ def items():
 
 @command
 def showdeck(name):
-    return _decks[name]
+    return { word: ",".join(meaning_of(word)) for word in _decks[name] }
 
 @command
 def setdeck(name):
@@ -50,15 +50,23 @@ def playdeck(deck):
         print(word)
         play(word)
 
+@command
+def deletedeck(name):
+    del _decks[name]
     
 @command
 def createdeck(name):
     _decks[name] = []
     setdeck(name)
+
+@command
+def countdeck(name):
+    if name in _decks:
+        return f"Deck '{name}' has {len(_decks[name])} words"
     
 @command
 def showdecks():
-    print(list(_decks.keys()))
+    return list(_decks.keys())
 
 @command
 def pluraldeck(deck):
@@ -85,8 +93,55 @@ def load_xlsx(filename):
         )
 
         for word, gender, meaning in words:
+            if not(gender or meaning):
+                continue
+            
             addnoun(gender.lower(), word)
             add(word)
             addmeaning(word, str(meaning))
             
         closedeck()
+
+def chunks(lst, n):
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
+        
+@command
+def split_deck(name, number):
+    number = int(number)
+    sub_decks = list(chunks(_decks[name], number))
+
+    for i, sub_deck in zip(range(1, len(sub_decks)+1), sub_decks):
+        createdeck(f"{name}_{i}")
+        for word in sub_deck:
+            add(word)
+        closedeck()    
+
+@command
+def load_duolingo():
+    createdeck("duolingo_nouns")
+
+    with open("duolingo.txt") as file_handle:
+        words = []
+        for line in file_handle:
+            cols = line.strip().split()
+            word = cols[0]
+            category = cols[1]
+
+            if category == "Noun":
+                sum = summary(word)
+                if not sum:
+                    continue
+
+                _, gender, meaning = sum
+
+                if not (gender or meaning):
+                    continue
+                
+                addnoun(gender.lower(), word)
+                add(word)
+                addmeaning(word, str(meaning))            
+            
+    closedeck()
+
+        

@@ -12,6 +12,9 @@ _dictcli_de_en = [ "dict", "-d", "german-english" ]
 _dictcli_en_de = [ "dict", "-d", "english-german" ]
 _free_dict_eng_deu = [ "dict", "-d", "fd-eng-deu" ]
 _free_dict_deu_eng = [ "dict", "-d", "fd-deu-eng" ]
+_dictcli_de_pt = [ 'dict', '-d', 'fd-deu-por' ]
+
+active_dictionary = _dictcli_de_pt
 
 class Die:
     pass
@@ -36,6 +39,10 @@ def summary(word):
         return (word, gender, meaning)
     else:
         return None
+
+@command
+def translate(word):
+    return free_dict(word, active_dictionary)
 
 @command
 def parseline():

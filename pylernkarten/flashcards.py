@@ -3,6 +3,9 @@ from pylernkarten.commands import command
 from pylernkarten.words import article_of, meaning_of
 from pylernkarten.dictionary import *
 import pylernkarten.decks as decks
+import json
+
+errors = []
 
 class Card:
     def __init__(self,text,back):
@@ -18,19 +21,57 @@ class Card:
 
     __repr__ = __str__
 
-def play_cards(cards_it):
+def play_cards(cards_it, json_dump=False):
     cards = list(cards_it)
+    global errors
     shuffle(cards)
 
-    for card in cards:
-        guess = input(card.text + ": " )
-        if card.matches(guess):
-            print("Correct!")
+    def input_text(card):
+        if json_dump:
+            return json.dumps({'card': card.text}) + "\n"
         else:
-            print("Too bad! The correct answer was: " + card.back)
-            return
+            return card.text + ": "
+        
+    def right_answer(card):
+        if json_dump:
+            return json.dumps({'right_answer': True, 'message': ''})
+        else:
+            return "Correct!"
 
+    def wrong_answer(card):
+        if json_dump:
+            return json.dumps({'right_answer': False, 'message': 'Too bad! The correct answer was: ' + str(card.back)})
+        else:
+            return "Too bad! The correct answer was: " + card.back
+            
+
+    errors = []
+    
+    for card in cards:
+        guess = input(input_text(card))
+        if card.matches(guess):
+            print(right_answer(card))
+        else:
+            print(wrong_answer(card))
+            errors.append(card.text)
+        
+
+    if errors:
+        print("Your errors:")
+        return errors
+    
     print("Well done!")
+
+@command
+def save_errors(deckname):
+    createdeck(deckname)
+    for error in errors:
+        add(error)
+    closedeck()
+
+@command
+def show_errors():
+    return errors
 
 @command
 def guessdeck(name):
@@ -48,5 +89,6 @@ def playreverse(name):
 @command 
 def diederdas(name):
     play_cards(
-        Card(noun, article_of(noun)) for noun in decks.deck(name)
+        (Card(noun, article_of(noun)) for noun in decks.deck(name)),
+        json_dump=True
     )

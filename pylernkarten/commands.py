@@ -4,6 +4,7 @@ import shlex
 import inspect
 import importlib
 import os
+import json
 
 _commands = {}
 _modules = {}
@@ -26,7 +27,7 @@ def command(func):
     
     return func
 
-def parse_command(string):
+def parse_command(string, dump_json=False):
     string = string.strip()
 
     if not string:
@@ -49,16 +50,37 @@ def parse_command(string):
             comm = _commands[aslist[0]]
             args = [ _escape(w) for w in aslist[1:] ]
             result = comm(*args)
+
+            if dump_json:
+                dump_output_as_json(result)
+                return
             
-            if result and type(result) != str and is_iterable(result):
+            if not result:
+                return
+
+            if type(result) == dict:
+                print_dict(result)
+            elif type(result) != str and is_iterable(result):
                 print_iterable(result)
-            elif result:
+            else:
                 print(result)
                 
         except Exception:
             traceback.print_exc(file=sys.stdout)
 
     return _command
+
+def dump_output_as_json(result):
+    if type(result) == dict:
+        print(json.dumps(result))
+    elif type(result) != str and is_iterable(result):
+        print(json.dumps(list(result)))
+    else:
+        print(json.dumps({'result': result}))
+
+def print_dict(result):
+    for k, v in result.items():
+        print(f"{k}: {v}")
 
 def print_iterable(value):
     for val in value:
@@ -109,10 +131,14 @@ def is_iterable(value):
     except:
         return False
     
-def main_loop():
+def main_loop(input_str = "> ", output = ""):
+    dump_json = output == "json"
+    
     while True:
         try:
-            command = parse_command(input("> "))
+            command = parse_command(
+                input(input_str), dump_json
+            )
             command()
         except KeyboardInterrupt: # ctrl-c
             print()

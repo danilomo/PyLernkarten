@@ -1,10 +1,10 @@
 import feedparser
 from pylernkarten.commands import command
 from pylernkarten.dictionary import *
-
+from pylernkarten.words import *
+from pylernkarten.decks import *
 slowgerman_items = []
 
-@command
 def loadsg():
     global slowgerman_items
     feed = feedparser.parse("https://feeds.podcastmirror.com/slowgerman")
@@ -36,23 +36,44 @@ def validate_word(word):
         pass
 
     return True
-    
+
+
+blacklist = set([
+    "ich", "es", "aus", "es", "er", "sein", "oder", "aber", "text"
+])
 
 @command
-def show_words(number, filter = ""):
+def create_deck(number, filter = ""):
     global slowgerman_items
     item = slowgerman_items[int(number)]
-    summary = extract_words(item["summary"])
+    text = extract_words(item["summary"])
 
-    words = {
-        word.strip(): fd_de(word.strip()) for word in summary.split()
-        if validate_word(word.strip())
-    }
-
-    return (
-        f"{word}: {str(meaning)}"
-        for word, meaning in words.items()
-        if meaning and filter.lower() in word.lower()
-    )
-
+    print(summary)    
     
+    words = set(
+        word.strip() for word in text.split()
+        if validate_word(word.strip())
+    )
+    words = (summary(word)
+             for word in words
+             if word and word.lower() not in blacklist and word[0].isupper()
+    )
+    words = (word for word in words if word)
+    
+
+    createdeck(f"sg_{number}")
+
+    for word, gender, meaning in words:
+        if not(gender or meaning):
+            continue
+        
+        addnoun(gender.lower(), word)
+        add(word)
+        addmeaning(word, str(meaning))
+            
+    closedeck()
+    
+try:
+    loadsg()
+except Exception as ex:
+    print("Warning: " + str(ex))
