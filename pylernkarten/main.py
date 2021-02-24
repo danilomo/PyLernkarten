@@ -22,7 +22,7 @@ def main():
     commands.on_reload = lambda m: workspace.load_workspace()
     add_default_aliases()
     workspace.load_workspace()
-    input_str = "> "
+    input_str = ""
     output = ""
     
     if len(sys.argv) > 2:

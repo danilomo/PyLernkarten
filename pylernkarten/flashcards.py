@@ -26,9 +26,9 @@ def play_cards(cards_it, json_dump=False):
     global errors
     shuffle(cards)
 
-    def input_text(card):
+    def input_text(card, has_more):
         if json_dump:
-            return json.dumps({'card': card.text}) + "\n"
+            return json.dumps({'card': card.text, 'has_more': has_more}) + "\n"
         else:
             return card.text + ": "
         
@@ -47,8 +47,10 @@ def play_cards(cards_it, json_dump=False):
 
     errors = []
     
-    for card in cards:
-        guess = input(input_text(card))
+    for i, card in zip(range(0, len(cards)), cards):
+        has_more = i != len(cards) - 1
+
+        guess = input(input_text(card, has_more))
         if card.matches(guess):
             print(right_answer(card))
         else:
