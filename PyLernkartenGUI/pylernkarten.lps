@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="5">
+      <Unit0>
+        <Filename Value="pylernkarten.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="32" Y="18"/>
+        <UsageCount Value="21"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="mainwindow.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MainWindowForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <TopLine Value="32"/>
+        <CursorPos X="42" Y="51"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="lernkarten.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="85"/>
+        <CursorPos X="39" Y="100"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="jsontools.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="JsonTools"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="651"/>
+        <CursorPos Y="672"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="derdiedas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DerDieDasForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="66"/>
+        <CursorPos X="38" Y="76"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit4>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="23" Column="22"/>
+      </Position1>
+      <Position2>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="24" Column="22"/>
+      </Position2>
+      <Position3>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="16" Column="75"/>
+      </Position3>
+      <Position4>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="43" TopLine="9"/>
+      </Position4>
+      <Position5>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="45" TopLine="9"/>
+      </Position5>
+      <Position6>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="30" Column="5"/>
+      </Position6>
+      <Position7>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="25" Column="22" TopLine="11"/>
+      </Position7>
+      <Position8>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="62" Column="16" TopLine="28"/>
+      </Position8>
+      <Position9>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="50" Column="4" TopLine="27"/>
+      </Position9>
+      <Position10>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="29" Column="30" TopLine="28"/>
+      </Position10>
+      <Position11>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="9" Column="58"/>
+      </Position11>
+      <Position12>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="54" TopLine="27"/>
+      </Position12>
+      <Position13>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="56" TopLine="27"/>
+      </Position13>
+      <Position14>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="54" TopLine="27"/>
+      </Position14>
+      <Position15>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="9" Column="105"/>
+      </Position15>
+      <Position16>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="17" Column="43"/>
+      </Position16>
+      <Position17>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="43" Column="3" TopLine="6"/>
+      </Position17>
+      <Position18>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="54" Column="3" TopLine="14"/>
+      </Position18>
+      <Position19>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="26" Column="38" TopLine="2"/>
+      </Position19>
+      <Position20>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="81" Column="11" TopLine="57"/>
+      </Position20>
+      <Position21>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="100" Column="5" TopLine="60"/>
+      </Position21>
+      <Position22>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="34" Column="50" TopLine="7"/>
+      </Position22>
+      <Position23>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="70" Column="32" TopLine="52"/>
+      </Position23>
+      <Position24>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="51" Column="42" TopLine="32"/>
+      </Position24>
+      <Position25>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="35" Column="37" TopLine="14"/>
+      </Position25>
+      <Position26>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="66" Column="31" TopLine="39"/>
+      </Position26>
+      <Position27>
+        <Filename Value="derdiedas.pas"/>
+        <Caret Line="67" Column="17" TopLine="51"/>
+      </Position27>
+      <Position28>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="51" Column="42" TopLine="32"/>
+      </Position28>
+      <Position29>
+        <Filename Value="lernkarten.pas"/>
+        <Caret Line="34" Column="16" TopLine="19"/>
+      </Position29>
+      <Position30>
+        <Filename Value="lernkarten.pas"/>
+        <Caret Line="90" Column="118" TopLine="67"/>
+      </Position30>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

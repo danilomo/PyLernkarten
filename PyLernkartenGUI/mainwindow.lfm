@@ -1,0 +1,78 @@
+object MainWindowForm: TMainWindowForm
+  Left = 363
+  Height = 511
+  Top = 240
+  Width = 663
+  Caption = 'PyLernkarten'
+  ClientHeight = 511
+  ClientWidth = 663
+  OnCreate = FormCreate
+  LCLVersion = '2.0.6.0'
+  object PageControl: TPageControl
+    Left = 0
+    Height = 511
+    Top = 0
+    Width = 663
+    ActivePage = DecksSheet
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabIndex = 0
+    TabOrder = 0
+    object DecksSheet: TTabSheet
+      Caption = 'Decks'
+      ClientHeight = 480
+      ClientWidth = 653
+      object DecksListBox: TListBox
+        Left = 8
+        Height = 456
+        Top = 8
+        Width = 328
+        ItemHeight = 0
+        ScrollWidth = 326
+        TabOrder = 0
+        TopIndex = -1
+      end
+      object DerDieDasButton: TButton
+        Left = 416
+        Height = 25
+        Top = 24
+        Width = 147
+        Caption = 'Der/Die/Das'
+        OnClick = DerDieDasButtonClick
+        TabOrder = 1
+      end
+      object Button2: TButton
+        Left = 416
+        Height = 25
+        Top = 68
+        Width = 147
+        Caption = 'Meaning'
+        TabOrder = 2
+      end
+      object Button3: TButton
+        Left = 416
+        Height = 25
+        Top = 112
+        Width = 147
+        Caption = 'Plural form'
+        TabOrder = 3
+      end
+      object Button4: TButton
+        Left = 416
+        Height = 25
+        Top = 160
+        Width = 147
+        Caption = 'Perfekt'
+        TabOrder = 4
+      end
+    end
+    object Nouns: TTabSheet
+      Caption = 'Nouns'
+    end
+    object Verbs: TTabSheet
+      Caption = 'Verbs'
+    end
+    object TabSheet1: TTabSheet
+      Caption = 'Utils'
+    end
+  end
+end

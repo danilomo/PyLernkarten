@@ -28,7 +28,7 @@ def play_cards(cards_it, json_dump=False):
 
     def input_text(card, has_more):
         if json_dump:
-            return json.dumps({'card': card.text, 'has_more': has_more}) + "\n"
+            return json.dumps({'card': card.text, 'notes': str(meaning_of(card.text)), 'has_more': has_more}) + "\n"
         else:
             return card.text + ": "
         
@@ -56,7 +56,9 @@ def play_cards(cards_it, json_dump=False):
         else:
             print(wrong_answer(card))
             errors.append(card.text)
-        
+
+    if json_dump:
+        return
 
     if errors:
         print("Your errors:")
