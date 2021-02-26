@@ -23,6 +23,9 @@ def meanings():
 def meaning_of(word):
     return list(_relations['meaning'][word])
 
+def is_noun(word):
+    return word in _tags['noun']
+
 @command
 def addplural(noun, plural):
     _relations['plural'][noun] = plural
@@ -84,5 +87,5 @@ def article_of(noun):
     if noun in _tags['das']:
         return 'das'
 
-    return None
+    return ''
 

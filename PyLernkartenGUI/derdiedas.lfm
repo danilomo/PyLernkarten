@@ -1,7 +1,7 @@
 object DerDieDasForm: TDerDieDasForm
-  Left = 447
+  Left = 370
   Height = 344
-  Top = 330
+  Top = 128
   Width = 557
   Caption = 'Der/Die/Das'
   ClientHeight = 344

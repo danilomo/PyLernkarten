@@ -5,7 +5,7 @@ unit lernkarten;
 interface
 
 uses
-  Classes, SysUtils, Process, fpjson, jsonparser, Dialogs, JsonTools;
+  Classes, SysUtils, Process, fpjson, jsonparser, Dialogs, JsonTools, Grids;
 
 type
   TAnswer = record
@@ -24,19 +24,22 @@ type
     FOutputLines: TStringList;
     FHasMoreCards: boolean;
 
-    procedure SendCommand(command: ansistring) overload;
+    procedure SendCommandWithoutReadingOutput(command: string);
     function ReadFromProcess: ansistring;
   public
     constructor Create;
     destructor Destroy; override;
 
-    procedure StartGame(deck: string);
-    function GetNextCard: TCard;
-    function AnswerCard(answer: string): TAnswer;
-    procedure ListDecks(aStringList: TStringList);
     function SendCommand(command: string): string;
 
+    procedure ListDecks(aStringList: TStringList);
+    procedure ListNouns(aStringGrid: TStringGrid; deckName: string);
+
+    // flaschard game functions
+    procedure StartGame(deck: string);
     property HasMoreCards: boolean read FHasMoreCards;
+    function GetNextCard: TCard;
+    function AnswerCard(answer: string): TAnswer;
 
   end;
 
@@ -61,10 +64,21 @@ begin
   inherited;
 end;
 
-procedure TFlashcards.SendCommand(command: string);
+procedure TFlashcards.SendCommandWithoutReadingOutput(command: string);
 begin
   command := command + LineEnding;
   FProcess.Input.Write(command[1], length(command));
+end;
+
+function TFlashcards.SendCommand(command: string): string;
+var
+  stringList: TStringList;
+begin
+  stringList := TStringList.Create();
+  SendCommandWithoutReadingOutput(command);
+  stringList.LoadFromStream(FProcess.Output);
+  Result := stringList.Text;
+  stringList.Free;
 end;
 
 function TFlashcards.ReadFromProcess: string;
@@ -106,7 +120,7 @@ var
   jObject: TJSONObject;
   output: string;
 begin
-  SendCommand(answer);
+  SendCommandWithoutReadingOutput(answer);
   output := ReadFromProcess;
   jData := GetJSON(output);
   jObject := TJSONObject(jData);
@@ -114,29 +128,65 @@ begin
   Result.success := jObject.Get('right_answer', False);
   Result.message := jObject.Get('message', '');
 
-  jData.Free;
+  jObject.Free;
 end;
 
 procedure TFlashcards.StartGame(deck: string);
 begin
-  SendCommand('ddd ' + deck);
+  SendCommandWithoutReadingOutput('ddd ' + deck);
+end;
+
+// general functions
+
+procedure TFlashcards.ListNouns(aStringGrid: TStringGrid; deckName: string);
+var
+  output: string;
+  jData: TJSONData;
+  jArray: TJSONArray;
+  row: TJSONArray;
+  i: integer;
+begin
+  output := SendCommand('showdeck ' + deckName + ' nouns');
+
+  jData := GetJSON(output);
+  jArray := TJSONArray(jData);
+
+  for i := 0 to jArray.Count - 1 do begin
+      row := jArray.Arrays[i];
+
+      aStringGrid.InsertRowWithValues(i + 1, [
+        IntToStr(i + 1),
+        row.Strings[0],
+        row.Strings[1],
+        row.Strings[2],
+        row.Strings[3]
+      ]);
+  end;
+
+  aStringGrid.RowCount := jArray.Count;
+  aStringGrid.Row := 1;
+
+  jArray.Free;
 end;
 
 procedure TFlashcards.ListDecks(aStringList: TStringList);
+var
+  output: string;
+  jData: TJSONData;
+  jObject: TJSONArray;
+  i: integer;
 begin
-  SendCommand('showdecks');
-  aStringList.LoadFromStream(FProcess.Output);
+  output := SendCommand('showdecks');
+
+  jData := GetJSON(output);
+  jObject := TJSONArray(jData);
+
+  for i := 0 to jObject.Count - 1 do begin
+    aStringList.Add(jObject.Strings[i]);
+  end;
+
+  jObject.Free;
 end;
 
-function TFlashcards.SendCommand(command: string): string;
-var
-  stringList: TStringList;
-begin
-  stringList := TStringList.Create();
-  SendCommand(command);
-  stringList.LoadFromStream(FProcess.Output);
-  Result := stringList.Text;
-  stringList.Free;
-end;
 
 end.

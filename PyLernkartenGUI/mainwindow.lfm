@@ -1,30 +1,30 @@
 object MainWindowForm: TMainWindowForm
-  Left = 363
-  Height = 511
-  Top = 240
-  Width = 663
+  Left = 433
+  Height = 608
+  Top = 79
+  Width = 827
   Caption = 'PyLernkarten'
-  ClientHeight = 511
-  ClientWidth = 663
+  ClientHeight = 608
+  ClientWidth = 827
   OnCreate = FormCreate
   LCLVersion = '2.0.6.0'
   object PageControl: TPageControl
     Left = 0
-    Height = 511
+    Height = 608
     Top = 0
-    Width = 663
-    ActivePage = DecksSheet
+    Width = 827
+    ActivePage = Nouns
     Anchors = [akTop, akLeft, akRight, akBottom]
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     object DecksSheet: TTabSheet
       Caption = 'Decks'
-      ClientHeight = 480
-      ClientWidth = 653
+      ClientHeight = 577
+      ClientWidth = 817
       object DecksListBox: TListBox
         Left = 8
-        Height = 456
-        Top = 8
+        Height = 424
+        Top = 40
         Width = 328
         ItemHeight = 0
         ScrollWidth = 326
@@ -32,41 +32,120 @@ object MainWindowForm: TMainWindowForm
         TopIndex = -1
       end
       object DerDieDasButton: TButton
-        Left = 416
+        Left = 360
         Height = 25
-        Top = 24
+        Top = 45
         Width = 147
         Caption = 'Der/Die/Das'
         OnClick = DerDieDasButtonClick
         TabOrder = 1
       end
       object Button2: TButton
-        Left = 416
+        Left = 360
         Height = 25
-        Top = 68
+        Top = 89
         Width = 147
         Caption = 'Meaning'
         TabOrder = 2
       end
       object Button3: TButton
-        Left = 416
+        Left = 360
         Height = 25
-        Top = 112
+        Top = 133
         Width = 147
         Caption = 'Plural form'
         TabOrder = 3
       end
       object Button4: TButton
-        Left = 416
+        Left = 360
         Height = 25
-        Top = 160
+        Top = 181
         Width = 147
         Caption = 'Perfekt'
         TabOrder = 4
       end
+      object Label1: TLabel
+        Left = 360
+        Height = 15
+        Top = 10
+        Width = 72
+        Caption = 'Select game'
+        ParentColor = False
+      end
+      object Label2: TLabel
+        Left = 8
+        Height = 15
+        Top = 10
+        Width = 68
+        Caption = 'Select deck'
+        ParentColor = False
+      end
     end
     object Nouns: TTabSheet
       Caption = 'Nouns'
+      ClientHeight = 577
+      ClientWidth = 817
+      OnShow = NounsShow
+      object TabControl1: TTabControl
+        Left = -2
+        Height = 568
+        Top = 8
+        Width = 824
+        OnChange = TabControl1Change
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        TabOrder = 0
+        object NounsGrid: TStringGrid
+          AnchorSideBottom.Control = Panel1
+          Left = 8
+          Height = 318
+          Top = 40
+          Width = 803
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          BorderSpacing.Bottom = 10
+          Columns = <          
+            item
+              Title.Caption = 'Noun'
+              Width = 141
+            end          
+            item
+              PickList.Strings = (
+                'der'
+                'die'
+                'das'
+              )
+              Title.Caption = 'Gender'
+              Width = 64
+            end          
+            item
+              Title.Caption = 'Plural'
+              Width = 115
+            end          
+            item
+              Title.Caption = 'Meaning'
+              Width = 353
+            end>
+          Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+          TabOrder = 1
+          ColWidths = (
+            38
+            141
+            64
+            115
+            353
+          )
+        end
+        object Panel1: TPanel
+          Left = 8
+          Height = 196
+          Top = 368
+          Width = 803
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          BevelInner = bvLowered
+          BevelOuter = bvNone
+          BorderStyle = bsSingle
+          TabOrder = 2
+        end
+      end
     end
     object Verbs: TTabSheet
       Caption = 'Verbs'

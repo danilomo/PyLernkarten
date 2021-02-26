@@ -5,8 +5,8 @@ unit mainwindow;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ValEdit,
-  Grids, ExtCtrls, ComCtrls, derdiedas, Types, lernkarten;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  Grids, ExtCtrls, ComCtrls, SynEdit, derdiedas, lernkarten;
 
 type
 
@@ -18,13 +18,20 @@ type
     Button3: TButton;
     Button4: TButton;
     DecksListBox: TListBox;
+    Label1: TLabel;
+    Label2: TLabel;
     PageControl: TPageControl;
     DecksSheet: TTabSheet;
     Nouns: TTabSheet;
+    NounsGrid: TStringGrid;
+    Panel1: TPanel;
+    TabControl1: TTabControl;
     TabSheet1: TTabSheet;
     Verbs: TTabSheet;
     procedure DerDieDasButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure NounsShow(Sender: TObject);
+    procedure TabControl1Change(Sender: TObject);
   private
     FLernkarten: TFlashcards;
   public
@@ -40,13 +47,11 @@ implementation
 
 { TMainWindowForm }
 
-
 procedure TMainWindowForm.DerDieDasButtonClick(Sender: TObject);
 var
   selectedDeck: string;
 begin
   selectedDeck := DecksListBox.GetSelectedText;
-  selectedDeck := selectedDeck.Substring(2);
   DerDieDasForm.Deck := selectedDeck;
   DerDieDasForm.Lernkarten := FLernkarten;
   DerDieDasForm.ShowModal;
@@ -61,10 +66,28 @@ begin
 
   list := TStringList.Create;
   FLernkarten.ListDecks(list);
-  for i := 0 to list.Count - 1 do
+  for i := 0 to list.Count - 1 do begin
     DecksListBox.Items.Add(list[i]);
+    TabControl1.Tabs.Add(list[i]);
+  end;
 
   list.Destroy;
+end;
+
+procedure TMainWindowForm.NounsShow(Sender: TObject);
+var
+  deckName: string;
+begin
+  deckName := TabControl1.Tabs[TabControl1.TabIndex];
+  FLernkarten.ListNouns(NounsGrid, deckName);
+end;
+
+procedure TMainWindowForm.TabControl1Change(Sender: TObject);
+var
+  deckName : string;
+begin
+  deckName := TabControl1.Tabs[TabControl1.TabIndex];
+  FLernkarten.ListNouns(NounsGrid, deckName);
 end;
 
 

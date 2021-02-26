@@ -23,13 +23,7 @@ def main():
     add_default_aliases()
     workspace.load_workspace()
     input_str = ""
-    output = ""
-    
-    if len(sys.argv) > 2:
-        input_str = sys.argv[2]
-
-    if len(sys.argv) > 3:
-        output = sys.argv[3]
+    output = "json"
     
     main_loop(input_str, output)
 

@@ -5,7 +5,7 @@ program pylernkarten;
 uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   cthreads, {$ENDIF} {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms,
+  Forms, tachartlazaruspkg,
   mainwindow, derdiedas { you can add units after this };
 
 {$R *.res}
