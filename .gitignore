@@ -4,6 +4,6 @@ pylernkarten.egg-info/
 build/
 dist/
 myenv/
-PyLernKartenGUI/lib*
-PyLernKartenGUI/backup*
-PyLernKartenGUI/pylernkarten
+/PyLernKartenGUI/lib
+/PyLernKartenGUI/backup
+/PyLernKartenGUI/pylernkarten
