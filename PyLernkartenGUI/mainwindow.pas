@@ -26,11 +26,13 @@ type
     NounsGrid: TStringGrid;
     Panel1: TPanel;
     TabControl1: TTabControl;
-    TabSheet1: TTabSheet;
+    Practice: TTabSheet;
+    TabSheet2: TTabSheet;
     Verbs: TTabSheet;
     procedure DerDieDasButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure NounsShow(Sender: TObject);
+    procedure ScrollBox1Click(Sender: TObject);
     procedure TabControl1Change(Sender: TObject);
   private
     FLernkarten: TFlashcards;
@@ -57,6 +59,8 @@ begin
   DerDieDasForm.ShowModal;
 end;
 
+
+
 procedure TMainWindowForm.FormCreate(Sender: TObject);
 var
   i: integer;
@@ -66,7 +70,8 @@ begin
 
   list := TStringList.Create;
   FLernkarten.ListDecks(list);
-  for i := 0 to list.Count - 1 do begin
+  for i := 0 to list.Count - 1 do
+  begin
     DecksListBox.Items.Add(list[i]);
     TabControl1.Tabs.Add(list[i]);
   end;
@@ -82,9 +87,14 @@ begin
   FLernkarten.ListNouns(NounsGrid, deckName);
 end;
 
+procedure TMainWindowForm.ScrollBox1Click(Sender: TObject);
+begin
+
+end;
+
 procedure TMainWindowForm.TabControl1Change(Sender: TObject);
 var
-  deckName : string;
+  deckName: string;
 begin
   deckName := TabControl1.Tabs[TabControl1.TabIndex];
   FLernkarten.ListNouns(NounsGrid, deckName);
@@ -93,4 +103,3 @@ end;
 
 
 end.
-

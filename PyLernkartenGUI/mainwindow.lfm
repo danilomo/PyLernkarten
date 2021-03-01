@@ -1,26 +1,26 @@
 object MainWindowForm: TMainWindowForm
-  Left = 433
-  Height = 608
-  Top = 79
-  Width = 827
+  Left = 351
+  Height = 531
+  Top = 189
+  Width = 847
   Caption = 'PyLernkarten'
-  ClientHeight = 608
-  ClientWidth = 827
+  ClientHeight = 531
+  ClientWidth = 847
   OnCreate = FormCreate
-  LCLVersion = '2.0.6.0'
+  LCLVersion = '1.8.2.0'
   object PageControl: TPageControl
     Left = 0
-    Height = 608
+    Height = 531
     Top = 0
-    Width = 827
-    ActivePage = Nouns
+    Width = 847
+    ActivePage = DecksSheet
     Anchors = [akTop, akLeft, akRight, akBottom]
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 0
     object DecksSheet: TTabSheet
       Caption = 'Decks'
-      ClientHeight = 577
-      ClientWidth = 817
+      ClientHeight = 500
+      ClientWidth = 843
       object DecksListBox: TListBox
         Left = 8
         Height = 424
@@ -66,31 +66,31 @@ object MainWindowForm: TMainWindowForm
       end
       object Label1: TLabel
         Left = 360
-        Height = 15
+        Height = 17
         Top = 10
-        Width = 72
+        Width = 81
         Caption = 'Select game'
         ParentColor = False
       end
       object Label2: TLabel
         Left = 8
-        Height = 15
+        Height = 17
         Top = 10
-        Width = 68
+        Width = 76
         Caption = 'Select deck'
         ParentColor = False
       end
     end
     object Nouns: TTabSheet
       Caption = 'Nouns'
-      ClientHeight = 577
-      ClientWidth = 817
+      ClientHeight = 500
+      ClientWidth = 843
       OnShow = NounsShow
       object TabControl1: TTabControl
         Left = -2
-        Height = 568
+        Height = 491
         Top = 8
-        Width = 824
+        Width = 850
         OnChange = TabControl1Change
         Anchors = [akTop, akLeft, akRight, akBottom]
         TabOrder = 0
@@ -99,7 +99,7 @@ object MainWindowForm: TMainWindowForm
           Left = 8
           Height = 318
           Top = 40
-          Width = 803
+          Width = 829
           Anchors = [akTop, akLeft, akRight, akBottom]
           BorderSpacing.Bottom = 10
           Columns = <          
@@ -136,9 +136,9 @@ object MainWindowForm: TMainWindowForm
         end
         object Panel1: TPanel
           Left = 8
-          Height = 196
+          Height = 119
           Top = 368
-          Width = 803
+          Width = 829
           Anchors = [akTop, akLeft, akRight, akBottom]
           BevelInner = bvLowered
           BevelOuter = bvNone
@@ -150,8 +150,11 @@ object MainWindowForm: TMainWindowForm
     object Verbs: TTabSheet
       Caption = 'Verbs'
     end
-    object TabSheet1: TTabSheet
-      Caption = 'Utils'
+    object Practice: TTabSheet
+      Caption = 'Practice'
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'TabSheet2'
     end
   end
 end

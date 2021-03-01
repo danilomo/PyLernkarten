@@ -5,7 +5,8 @@ unit lernkarten;
 interface
 
 uses
-  Classes, SysUtils, Process, fpjson, jsonparser, Dialogs, JsonTools, Grids;
+  Classes, SysUtils, Process, fpjson, jsonparser, Dialogs, JsonTools, Grids,
+  StdCtrls, ExtCtrls;
 
 type
   TAnswer = record
@@ -34,6 +35,7 @@ type
 
     procedure ListDecks(aStringList: TStringList);
     procedure ListNouns(aStringGrid: TStringGrid; deckName: string);
+    procedure LoadFillInQuestion(panel: TFlowPanel);
 
     // flaschard game functions
     procedure StartGame(deck: string);
@@ -48,7 +50,7 @@ implementation
 constructor TFlashcards.Create;
 begin
   FProcess := TProcess.Create(nil);
-  FProcess.Executable := '/usr/bin/python';
+  FProcess.Executable := '/usr/bin/python3';
   FProcess.Parameters.Add('/home/danilo/Workspace/PyLernkarten/main.py');
   FProcess.Options := [poUsePipes];
   FProcess.Execute;
@@ -151,16 +153,12 @@ begin
   jData := GetJSON(output);
   jArray := TJSONArray(jData);
 
-  for i := 0 to jArray.Count - 1 do begin
-      row := jArray.Arrays[i];
+  for i := 0 to jArray.Count - 1 do
+  begin
+    row := jArray.Arrays[i];
 
-      aStringGrid.InsertRowWithValues(i + 1, [
-        IntToStr(i + 1),
-        row.Strings[0],
-        row.Strings[1],
-        row.Strings[2],
-        row.Strings[3]
-      ]);
+    aStringGrid.InsertRowWithValues(i + 1, [IntToStr(i + 1),
+      row.Strings[0], row.Strings[1], row.Strings[2], row.Strings[3]]);
   end;
 
   aStringGrid.RowCount := jArray.Count;
@@ -177,16 +175,61 @@ var
   i: integer;
 begin
   output := SendCommand('showdecks');
-
   jData := GetJSON(output);
   jObject := TJSONArray(jData);
 
-  for i := 0 to jObject.Count - 1 do begin
+  for i := 0 to jObject.Count - 1 do
+  begin
     aStringList.Add(jObject.Strings[i]);
   end;
 
   jObject.Free;
 end;
 
+procedure TFlashcards.LoadFillInQuestion(panel: TFlowPanel);
+var
+  output: string;
+  jData: TJSONData;
+  jArray, element: TJSONArray;
+  i: integer;
+  wordLabel: TLabel;
+  fillerEdit: TEdit;
+begin
+  output := SendCommand('question 0');
+  jData := GetJSON(output);
+  jArray := TJSONArray(jData);
+
+  for i := 0 to jArray.Count - 1 do
+  begin
+    element := jArray.Arrays[i];
+
+    if element.Strings[0] = 'text' then
+    begin
+      wordLabel := TLabel.Create(panel);
+      wordLabel.Caption := element.Strings[1];
+      panel.InsertControl(wordLabel);
+    end
+    else if element.Strings[0] = 'filler' then
+    begin
+      fillerEdit := TEdit.Create(panel);
+      fillerEdit.Width := 40;
+      panel.InsertControl(fillerEdit);
+    end
+    else
+    begin
+      wordLabel := TLabel.Create(panel);
+      wordLabel.Caption := ' ';
+      panel.InsertControl(wordLabel);
+    end;
+
+    if element.Strings[0] = 'newline' then
+      panel.ControlList[panel.ControlList.Count - 1].WrapAfter := waForce
+    else
+      panel.ControlList[panel.ControlList.Count - 1].WrapAfter := waAuto;
+  end;
+
+
+  jArray.Free;
+end;
 
 end.

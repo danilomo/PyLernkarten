@@ -1,0 +1,21 @@
+object Form1: TForm1
+  Left = 343
+  Height = 345
+  Top = 289
+  Width = 562
+  Caption = 'Form1'
+  ClientHeight = 345
+  ClientWidth = 562
+  OnCreate = FormCreate
+  LCLVersion = '1.8.2.0'
+  object FlowPanel1: TFlowPanel
+    Left = 24
+    Height = 291
+    Top = 19
+    Width = 511
+    ControlList = <>
+    FlowLayout = tlTop
+    FlowStyle = fsLeftRightTopBottom
+    TabOrder = 0
+  end
+end

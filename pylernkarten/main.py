@@ -8,6 +8,7 @@ import pylernkarten.feeds
 import pylernkarten.workspace as workspace
 import pylernkarten.flashcards
 import pylernkarten.dictionary
+import pylernkarten.practice
 
 def add_default_aliases():
     createalias("addnoun", "n")

@@ -3,6 +3,13 @@ import subprocess
 from subprocess import PIPE
 import re
 import sys
+from pylernkarten.words import *
+from pylernkarten.decks import *
+
+from difflib import SequenceMatcher
+
+def similar(a, b):
+    return SequenceMatcher(None, a, b).ratio()
 
 if not sys.warnoptions:
     import warnings
@@ -148,6 +155,27 @@ def find_plural(word):
     
     plural = [pattern.en.pluralize(w) for w in translation]
     result = [fd_eng(p) for p in plural]
+    result = [val for val in result if val]
+    result = [val for sublist in result for val in sublist]
+    result = [(similar(word.title(), val), val) for val in result if ' ' not in val]
+    result.sort(key=lambda x: x[0], reverse=True)
+    return [x[1] for x in result]
+    #if result and result[0]:
+        #return result
 
-    if result and result[0]:
-        return result[0][0]
+@command
+def load_plurals(deck):
+    print(showdeck)
+    for word in showdeck(deck).keys():
+        plural = find_plural(word)
+
+        if not plural:
+            continue
+
+        print(f"{word} - {plural}")
+        selected = input("Type a number or enter to skip: ")
+
+        if not selected:
+            continue
+
+        addplural(word, plural[int(selected)])
