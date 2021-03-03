@@ -6,7 +6,7 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   cthreads, {$ENDIF} {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, tachartlazaruspkg,
-  mainwindow, derdiedas, practice { you can add units after this };
+  mainwindow, derdiedas, practice, PyLernKartenUtils { you can add units after this };
 
 {$R *.res}
 

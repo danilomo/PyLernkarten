@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectSession>
-    <Version Value="10"/>
+    <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="8">
+    <Units Count="11">
       <Unit0>
         <Filename Value="pylernkarten.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="32" Y="18"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="86"/>
       </Unit0>
       <Unit1>
         <Filename Value="mainwindow.pas"/>
@@ -17,9 +17,10 @@
         <ComponentName Value="MainWindowForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="52"/>
-        <CursorPos X="3" Y="56"/>
-        <UsageCount Value="79"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="108"/>
+        <CursorPos X="29" Y="122"/>
+        <UsageCount Value="86"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -27,9 +28,9 @@
         <Filename Value="lernkarten.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="36"/>
-        <CursorPos Y="108"/>
-        <UsageCount Value="79"/>
+        <TopLine Value="66"/>
+        <CursorPos X="30" Y="82"/>
+        <UsageCount Value="86"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -39,7 +40,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="788"/>
         <CursorPos Y="802"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="86"/>
       </Unit3>
       <Unit4>
         <Filename Value="derdiedas.pas"/>
@@ -47,22 +48,12 @@
         <ComponentName Value="DerDieDasForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="84"/>
-        <CursorPos X="6" Y="101"/>
-        <UsageCount Value="79"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="52"/>
+        <CursorPos X="8" Y="84"/>
+        <UsageCount Value="86"/>
       </Unit4>
       <Unit5>
-        <Filename Value="mainwindow.lfm"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="97"/>
-        <CursorPos X="39" Y="119"/>
-        <UsageCount Value="7"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
-      </Unit5>
-      <Unit6>
         <Filename Value="practice.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form1"/>
@@ -70,7 +61,15 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos X="37" Y="8"/>
-        <UsageCount Value="27"/>
+        <UsageCount Value="34"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="mainwindow.lfm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="97"/>
+        <CursorPos X="39" Y="119"/>
+        <UsageCount Value="7"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit6>
       <Unit7>
         <Filename Value="/usr/lib/lazarus/1.8.2/lcl/forms.pp"/>
@@ -80,128 +79,155 @@
         <CursorPos X="14" Y="645"/>
         <UsageCount Value="10"/>
       </Unit7>
+      <Unit8>
+        <Filename Value="D:/Programs/lazarus/fpc/3.2.0/source/packages/fcl-stl/src/ghashset.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="121"/>
+        <CursorPos X="16" Y="118"/>
+        <UsageCount Value="10"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="D:/Programs/lazarus/fpc/3.2.0/source/packages/fcl-stl/src/ghashmap.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="124"/>
+        <CursorPos X="16" Y="140"/>
+        <UsageCount Value="10"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="pylernkartenutils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="PyLernKartenUtils"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="5" Y="15"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit10>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="99" Column="34" TopLine="64"/>
+        <Caret Line="117" Column="28" TopLine="100"/>
       </Position1>
       <Position2>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="100" Column="34" TopLine="74"/>
+        <Caret Line="49" Column="31" TopLine="21"/>
       </Position2>
       <Position3>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="101" Column="34" TopLine="75"/>
+        <Caret Line="12" Column="31"/>
       </Position3>
       <Position4>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="68" Column="44" TopLine="69"/>
+        <Caret Line="48" Column="37" TopLine="32"/>
       </Position4>
       <Position5>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="74" Column="25" TopLine="55"/>
+        <Caret Line="14" Column="3" TopLine="7"/>
       </Position5>
       <Position6>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="73" Column="25" TopLine="54"/>
+        <Caret Line="102" TopLine="88"/>
       </Position6>
       <Position7>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="74" Column="25" TopLine="55"/>
+        <Caret Line="48" Column="20" TopLine="29"/>
       </Position7>
       <Position8>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="73" Column="25" TopLine="54"/>
+        <Caret Line="53" Column="26" TopLine="37"/>
       </Position8>
       <Position9>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="74" Column="25" TopLine="55"/>
+        <Caret Line="63" Column="37" TopLine="37"/>
       </Position9>
       <Position10>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="106" Column="3" TopLine="93"/>
+        <Caret Line="48" Column="35" TopLine="32"/>
       </Position10>
       <Position11>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="107" Column="3" TopLine="94"/>
+        <Caret Line="9" Column="67"/>
       </Position11>
       <Position12>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="106" Column="3" TopLine="93"/>
+        <Caret Line="12" Column="13" TopLine="7"/>
       </Position12>
       <Position13>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="105" Column="3" TopLine="92"/>
+        <Caret Line="3" Column="20"/>
       </Position13>
       <Position14>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="104" Column="3" TopLine="91"/>
+        <Caret Line="12" Column="12"/>
       </Position14>
       <Position15>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="103" Column="3" TopLine="90"/>
+        <Caret Line="9" Column="70"/>
       </Position15>
       <Position16>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="102" Column="99" TopLine="90"/>
+        <Caret Line="12" Column="49"/>
       </Position16>
       <Position17>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="63" TopLine="54"/>
+        <Caret Line="3" Column="14"/>
       </Position17>
       <Position18>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="31" Column="22" TopLine="10"/>
+        <Caret Line="12" Column="58"/>
       </Position18>
       <Position19>
         <Filename Value="mainwindow.pas"/>
-        <Caret Line="56" Column="3" TopLine="52"/>
+        <Caret Line="9" Column="70"/>
       </Position19>
       <Position20>
-        <Filename Value="derdiedas.pas"/>
-        <Caret Line="39" Column="3" TopLine="59"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="16" Column="32"/>
       </Position20>
       <Position21>
-        <Filename Value="lernkarten.pas"/>
-        <Caret Line="43" Column="17" TopLine="34"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="15" Column="7"/>
       </Position21>
       <Position22>
-        <Filename Value="lernkarten.pas"/>
-        <Caret Line="106" Column="9" TopLine="96"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="68" Column="6" TopLine="45"/>
       </Position22>
       <Position23>
-        <Filename Value="lernkarten.pas"/>
-        <Caret Line="109" TopLine="96"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="14" Column="14"/>
       </Position23>
       <Position24>
-        <Filename Value="lernkarten.pas"/>
-        <Caret Line="111" TopLine="96"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="35" Column="27" TopLine="103"/>
       </Position24>
       <Position25>
-        <Filename Value="lernkarten.pas"/>
-        <Caret Line="113" TopLine="96"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="128" Column="3" TopLine="103"/>
       </Position25>
       <Position26>
-        <Filename Value="lernkarten.pas"/>
-        <Caret Line="115" TopLine="96"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="115" Column="27" TopLine="64"/>
       </Position26>
       <Position27>
-        <Filename Value="lernkarten.pas"/>
-        <Caret Line="116" TopLine="96"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="128" Column="36" TopLine="111"/>
       </Position27>
       <Position28>
-        <Filename Value="lernkarten.pas"/>
-        <Caret Line="117" TopLine="96"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="100" Column="45" TopLine="84"/>
       </Position28>
       <Position29>
-        <Filename Value="lernkarten.pas"/>
-        <Caret Line="108" TopLine="96"/>
+        <Filename Value="mainwindow.pas"/>
+        <Caret Line="67" Column="11" TopLine="51"/>
       </Position29>
       <Position30>
-        <Filename Value="mainwindow.pas"/>
-        <Caret Line="56" Column="3" TopLine="52"/>
+        <Filename Value="pylernkartenutils.pas"/>
+        <Caret Line="17" Column="24"/>
       </Position30>
     </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode="default"/>
+    </RunParams>
   </ProjectSession>
 </CONFIG>

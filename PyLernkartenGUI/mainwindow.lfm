@@ -1,160 +1,227 @@
 object MainWindowForm: TMainWindowForm
-  Left = 351
-  Height = 531
-  Top = 189
-  Width = 847
+  Left = 496
+  Height = 664
+  Top = 264
+  Width = 1059
   Caption = 'PyLernkarten'
-  ClientHeight = 531
-  ClientWidth = 847
+  ClientHeight = 664
+  ClientWidth = 1059
+  DesignTimePPI = 120
   OnCreate = FormCreate
-  LCLVersion = '1.8.2.0'
+  LCLVersion = '2.0.10.0'
   object PageControl: TPageControl
     Left = 0
-    Height = 531
+    Height = 664
     Top = 0
-    Width = 847
-    ActivePage = DecksSheet
+    Width = 1059
+    ActivePage = Nouns
     Anchors = [akTop, akLeft, akRight, akBottom]
-    TabIndex = 0
+    ParentFont = False
+    TabIndex = 1
     TabOrder = 0
     object DecksSheet: TTabSheet
       Caption = 'Decks'
-      ClientHeight = 500
-      ClientWidth = 843
+      ClientHeight = 631
+      ClientWidth = 1051
+      ParentFont = False
       object DecksListBox: TListBox
-        Left = 8
-        Height = 424
-        Top = 40
-        Width = 328
+        Left = 10
+        Height = 530
+        Top = 50
+        Width = 410
         ItemHeight = 0
+        ParentFont = False
         ScrollWidth = 326
         TabOrder = 0
-        TopIndex = -1
       end
       object DerDieDasButton: TButton
-        Left = 360
-        Height = 25
-        Top = 45
-        Width = 147
+        Left = 450
+        Height = 31
+        Top = 56
+        Width = 184
         Caption = 'Der/Die/Das'
         OnClick = DerDieDasButtonClick
+        ParentFont = False
         TabOrder = 1
       end
       object Button2: TButton
-        Left = 360
-        Height = 25
-        Top = 89
-        Width = 147
+        Left = 450
+        Height = 31
+        Top = 111
+        Width = 184
         Caption = 'Meaning'
+        ParentFont = False
         TabOrder = 2
       end
       object Button3: TButton
-        Left = 360
-        Height = 25
-        Top = 133
-        Width = 147
+        Left = 450
+        Height = 31
+        Top = 166
+        Width = 184
         Caption = 'Plural form'
+        ParentFont = False
         TabOrder = 3
       end
       object Button4: TButton
-        Left = 360
-        Height = 25
-        Top = 181
-        Width = 147
+        Left = 450
+        Height = 31
+        Top = 226
+        Width = 184
         Caption = 'Perfekt'
+        ParentFont = False
         TabOrder = 4
       end
       object Label1: TLabel
-        Left = 360
-        Height = 17
-        Top = 10
-        Width = 81
+        Left = 450
+        Height = 20
+        Top = 12
+        Width = 82
         Caption = 'Select game'
         ParentColor = False
+        ParentFont = False
       end
       object Label2: TLabel
-        Left = 8
-        Height = 17
-        Top = 10
-        Width = 76
+        Left = 10
+        Height = 20
+        Top = 12
+        Width = 75
         Caption = 'Select deck'
         ParentColor = False
+        ParentFont = False
       end
     end
     object Nouns: TTabSheet
       Caption = 'Nouns'
-      ClientHeight = 500
-      ClientWidth = 843
+      ClientHeight = 631
+      ClientWidth = 1051
       OnShow = NounsShow
+      ParentFont = False
       object TabControl1: TTabControl
         Left = -2
-        Height = 491
-        Top = 8
-        Width = 850
+        Height = 598
+        Top = 32
+        Width = 1059
         OnChange = TabControl1Change
         Anchors = [akTop, akLeft, akRight, akBottom]
+        ParentFont = False
         TabOrder = 0
         object NounsGrid: TStringGrid
           AnchorSideBottom.Control = Panel1
-          Left = 8
-          Height = 318
-          Top = 40
-          Width = 829
+          Left = 10
+          Height = 398
+          Top = 50
+          Width = 1032
           Anchors = [akTop, akLeft, akRight, akBottom]
-          BorderSpacing.Bottom = 10
+          BorderSpacing.Bottom = 12
           Columns = <          
             item
+              MinSize = 12
+              MaxSize = 250
               Title.Caption = 'Noun'
-              Width = 141
+              Width = 176
             end          
             item
+              MinSize = 12
+              MaxSize = 250
               PickList.Strings = (
                 'der'
                 'die'
                 'das'
               )
               Title.Caption = 'Gender'
-              Width = 64
+              Width = 80
             end          
             item
+              MinSize = 12
+              MaxSize = 250
               Title.Caption = 'Plural'
-              Width = 115
+              Width = 144
             end          
             item
+              MinSize = 12
+              MaxSize = 250
               Title.Caption = 'Meaning'
-              Width = 353
+              Width = 441
             end>
           Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goSmoothScroll]
+          ParentFont = False
           TabOrder = 1
+          OnSetEditText = NounsGridSetEditText
           ColWidths = (
-            38
-            141
-            64
-            115
-            353
+            48
+            176
+            80
+            144
+            441
           )
         end
         object Panel1: TPanel
-          Left = 8
-          Height = 119
-          Top = 368
-          Width = 829
+          Left = 10
+          Height = 135
+          Top = 460
+          Width = 1032
           Anchors = [akTop, akLeft, akRight, akBottom]
           BevelInner = bvLowered
           BevelOuter = bvNone
           BorderStyle = bsSingle
+          ParentFont = False
           TabOrder = 2
+        end
+      end
+      object ToolBar1: TToolBar
+        Left = 0
+        Height = 33
+        Top = 0
+        Width = 1051
+        Caption = 'ToolBar1'
+        TabOrder = 1
+        object SaveNounsChangesBtn: TButton
+          Left = 1
+          Height = 28
+          Top = 2
+          Width = 127
+          Caption = 'Save changes'
+          OnClick = SaveNounsChangesBtnClick
+          TabOrder = 0
         end
       end
     end
     object Verbs: TTabSheet
       Caption = 'Verbs'
+      ParentFont = False
     end
     object Practice: TTabSheet
       Caption = 'Practice'
+      ParentFont = False
     end
     object TabSheet2: TTabSheet
-      Caption = 'TabSheet2'
+      Caption = 'Utils'
+      ClientHeight = 631
+      ClientWidth = 1051
+      ParentFont = False
+      object CommandEdit: TEdit
+        Left = 32
+        Height = 28
+        Top = 24
+        Width = 864
+        TabOrder = 0
+      end
+      object OutputMemo: TMemo
+        Left = 32
+        Height = 525
+        Top = 63
+        Width = 969
+        TabOrder = 1
+      end
+      object Button1: TButton
+        Left = 907
+        Height = 31
+        Top = 21
+        Width = 94
+        Caption = 'Button1'
+        OnClick = Button1Click
+        TabOrder = 2
+      end
     end
   end
 end

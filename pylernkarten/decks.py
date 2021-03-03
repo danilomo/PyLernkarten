@@ -14,11 +14,11 @@ def items():
 @command
 def showdeck(name, filter=None):
     if not filter:
-        return { word: ",".join(meaning_of(word)) for word in _decks[name] }
+        return {word: meaning_of(word) for word in _decks[name]}
 
     if filter == 'nouns':
         return [
-            [word.title(), article_of(word), plural_of(word), str(meaning_of(word))]
+            [word, article_of(word), plural_of(word), meaning_of(word)]
             for word in _decks[name]
             if is_noun(word)
         ]

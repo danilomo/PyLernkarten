@@ -3,39 +3,50 @@ from random import shuffle
 
 _words = set()
 _tags = {'der': set(), 'die': set(), 'das': set(), 'noun': set()}
-_relations = {'plural': {}, 'meaning':{}}
+_relations = {'plural': {}, 'meaning': {}}
+
 
 def plurals():
     return _relations['plural'].items()
 
+
 def masculine():
     return _tags['der']
+
 
 def feminine():
     return _tags['die']
 
+
 def neutral():
     return _tags['das']
+
 
 def meanings():
     return _relations['meaning'].items()
 
+
 def meaning_of(word):
-    return list(_relations['meaning'][word])
+    return _relations['meaning'][word]
+
 
 def is_noun(word):
     return word in _tags['noun']
+
 
 @command
 def addplural(noun, plural):
     _relations['plural'][noun] = plural
 
+
 def plural_of(noun):
     return _relations['plural'].get(noun, "")
-    
+
+
 @command
 def showplural(noun):
     print(plural_of(noun))
+
 
 @command
 def gender(noun):
@@ -46,6 +57,7 @@ def gender(noun):
     article = article_of(noun)
     print("The article is " + article)
 
+
 @command
 def meaning(noun):
     if not _relations['meaning'][noun]:
@@ -53,9 +65,15 @@ def meaning(noun):
         return
 
     print('Meanings for ' + noun)
-    
+
     for m in _relations['meaning'][noun]:
-        print('* ' + m)    
+        print('* ' + m)
+
+@command
+def update_noun(noun, article, plural, meaningof):
+    addnoun(article, noun)
+    addplural(noun, plural)
+    addmeaning(noun, meaningof)
 
 @command
 def addnoun(article, noun):
@@ -63,19 +81,19 @@ def addnoun(article, noun):
     _tags[article].add(noun)
     _tags['noun'].add(noun)
 
+
 @command
-def addmeaning(word, *meaning):
-    meanings = _relations['meaning'].get(word,set())
-    meanings.update(meaning)
-    _relations['meaning'][word] = meanings
+def addmeaning(word, meaning):
+    _relations['meaning'][word] = meaning
+
+@command
+def setmeaning(word, meaning):
+    _relations['meaning'][word] = meaning
 
 @command
 def listnouns():
     print(_tags['noun'])
 
-@command
-def saveworkspace():
-    save_workspace()
 
 def article_of(noun):
     if noun in _tags['die']:
@@ -88,4 +106,3 @@ def article_of(noun):
         return 'das'
 
     return ''
-

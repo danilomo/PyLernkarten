@@ -44,8 +44,6 @@ implementation
 
 { TDerDieDasForm }
 
-
-
 procedure TDerDieDasForm.DerButtonClick(Sender: TObject);
 begin
   Answer('der');
@@ -81,7 +79,6 @@ var
   Result: TAnswer;
 begin
   Result := FLernkarten.AnswerCard(answer);
-
 
   if FLernkarten.HasMoreCards then
   begin

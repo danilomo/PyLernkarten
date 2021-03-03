@@ -32,6 +32,9 @@ type
     destructor Destroy; override;
 
     function SendCommand(command: string): string;
+    procedure SendCommandGetLines(command: string; stringList: TStrings);
+
+    procedure UpdateNoun(noun, gender, plural, meaning: string);
 
     procedure ListDecks(aStringList: TStringList);
     procedure ListNouns(aStringGrid: TStringGrid; deckName: string);
@@ -50,8 +53,8 @@ implementation
 constructor TFlashcards.Create;
 begin
   FProcess := TProcess.Create(nil);
-  FProcess.Executable := '/usr/bin/python3';
-  FProcess.Parameters.Add('/home/danilo/Workspace/PyLernkarten/main.py');
+  FProcess.Executable := 'C:\Users\danilo\AppData\Local\Programs\Python\Python37\python.exe';
+  FProcess.Parameters.Add('C:\Users\danilo\Desktop\PyLernkarten\main.py');
   FProcess.Options := [poUsePipes];
   FProcess.Execute;
 
@@ -64,6 +67,11 @@ begin
   FProcess.Destroy;
   FOutputLines.Destroy;
   inherited;
+end;
+
+procedure TFlashcards.UpdateNoun(noun, gender, plural, meaning: string);
+begin
+  SendCommand('update_noun ' + noun + ' ' + ' ' + gender + ' ' + plural + ' ' + meaning);
 end;
 
 procedure TFlashcards.SendCommandWithoutReadingOutput(command: string);
@@ -81,6 +89,12 @@ begin
   stringList.LoadFromStream(FProcess.Output);
   Result := stringList.Text;
   stringList.Free;
+end;
+
+procedure TFlashcards.SendCommandGetLines(command: string; stringList: TStrings);
+begin
+  SendCommandWithoutReadingOutput(command);
+  stringList.LoadFromStream(FProcess.Output);
 end;
 
 function TFlashcards.ReadFromProcess: string;
