@@ -53,8 +53,12 @@ implementation
 constructor TFlashcards.Create;
 begin
   FProcess := TProcess.Create(nil);
-  FProcess.Executable := 'C:\Users\danilo\AppData\Local\Programs\Python\Python37\python.exe';
-  FProcess.Parameters.Add('C:\Users\danilo\Desktop\PyLernkarten\main.py');
+  //FProcess.Executable := 'C:\Users\danilo\AppData\Local\Programs\Python\Python37\python.exe';
+  //FProcess.Parameters.Add('C:\Users\danilo\Desktop\PyLernkarten\main.py');
+
+  FProcess.Executable := '/usr/bin/python3';
+  FProcess.Parameters.Add('/home/danilo/Workspace/PyLernkarten/main.py');
+
   FProcess.Options := [poUsePipes];
   FProcess.Execute;
 

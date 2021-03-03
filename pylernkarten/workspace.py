@@ -23,7 +23,7 @@ def save_nouns(f):
 def save_meanings(f):
     for k, v in words.meanings():
         #ms = ('"%s"' % s for s in v)
-        f.write('addmeaning %s %s\n' % (k, v))
+        f.write('addmeaning %s "%s"\n' % (k, v))
 
 def save_plurals(f):
     for k, v in words.plurals():

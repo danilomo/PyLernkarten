@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Grids, ExtCtrls, ComCtrls, SynEdit, derdiedas, lernkarten, PyLernKartenUtils;
+  Grids, ExtCtrls, ComCtrls, SynEdit, derdiedas, lernkarten, PyLernKartenUtils,
+  LCLType;
 
 type
   { TMainWindowForm }
@@ -36,7 +37,8 @@ type
     procedure Button1Click(Sender: TObject);
     procedure DerDieDasButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure NounsGridSetEditText(Sender: TObject; ACol, ARow: integer; const Value: string);
+    procedure NounsGridSetEditText(Sender: TObject; ACol, ARow: integer;
+      const Value: string);
     procedure NounsShow(Sender: TObject);
     procedure SaveNounsChangesBtnClick(Sender: TObject);
     procedure TabControl1Change(Sender: TObject);
@@ -78,7 +80,7 @@ var
 begin
   FLernkarten := TFlashcards.Create;
   FChangedRows := TIntSet.Create;
-  FChangedRows.insert(0);
+
   list := TStringList.Create;
   FLernkarten.ListDecks(list);
   for i := 0 to list.Count - 1 do
@@ -106,29 +108,52 @@ end;
 
 procedure TMainWindowForm.SaveNounsChangesBtnClick(Sender: TObject);
 var
-  list: TStringList;
-  i: integer;
+  iterator: TIntSet.TIterator;
+  row: integer;
 begin
-  list := TStringList.Create;
+  if FChangedRows.IsEmpty then
+    Exit;
 
-  for i in FChangedRows do
-  begin
+  iterator := FChangedRows.Iterator;
+
+  repeat
+    row := iterator.Data;
+
     FLernkarten.UpdateNoun(
-      NounsGrid.Rows[i][1],
-      NounsGrid.Rows[i][2],
-      NounsGrid.Rows[i][3],
-      NounsGrid.Rows[i][4]);
-  end;
+      NounsGrid.Rows[row][1],
+      NounsGrid.Rows[row][2],
+      NounsGrid.Rows[row][3],
+      NounsGrid.Rows[row][4]);
+  until not iterator.Next;
 
   FLernkarten.SendCommand('saveworkspace');
 
-  list.Free;
+  FreeAndNil(FChangedRows);
+  FChangedRows := TIntSet.Create;
 end;
 
 procedure TMainWindowForm.TabControl1Change(Sender: TObject);
 var
   deckName: string;
+  Reply, BoxStyle: Integer;
 begin
+
+  if not FChangedRows.IsEmpty then
+  begin
+    BoxStyle := MB_ICONQUESTION + MB_YESNO;
+    Reply := Application.MessageBox('Do you want to save your changes?', 'PyLernkarten', BoxStyle);
+
+    if Reply = idYes then
+    begin
+      SaveNounsChangesBtnClick(nil);
+    end
+    else
+    begin
+      FreeAndNil(FChangedRows);
+      FChangedRows := TIntSet.Create;
+    end;
+  end;
+
   deckName := TabControl1.Tabs[TabControl1.TabIndex];
   FLernkarten.ListNouns(NounsGrid, deckName);
 end;
